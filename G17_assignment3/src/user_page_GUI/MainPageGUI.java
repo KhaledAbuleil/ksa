@@ -1,4 +1,4 @@
-package MainPageGUI;
+package user_page_GUI;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -56,8 +56,5 @@ public class MainPageGUI extends JFrame {
 		getContentPane().add(DenamicPanel);
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	
 }
