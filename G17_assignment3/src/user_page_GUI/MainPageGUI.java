@@ -3,6 +3,8 @@ package user_page_GUI;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class MainPageGUI extends JFrame {
@@ -43,8 +45,12 @@ public class MainPageGUI extends JFrame {
 		btnUpdateFile.setBounds(300, 11, 87, 23);
 		userpanel.add(btnUpdateFile);
 		
-		JButton btnSendRequest = new JButton("Send Request");
-		btnSendRequest.setBounds(409, 11, 99, 23);
+		JButton btnSendRequest = new JButton("Manage Groups");
+		btnSendRequest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSendRequest.setBounds(409, 11, 114, 23);
 		userpanel.add(btnSendRequest);
 		
 		JButton btnAddFolder = new JButton("Add folder");
