@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class MainPageGUI extends JFrame {
-	public MainPageGUI() {
+public class OLdMainPageGUI extends JFrame {
+	public OLdMainPageGUI() {
 		getContentPane().setLayout(null);
 		
 		JPanel Adminpanel = new JPanel();
