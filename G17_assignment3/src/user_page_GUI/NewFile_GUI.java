@@ -78,8 +78,9 @@ public class NewFile_GUI extends JPanel {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JButton btnGroup = new JButton("Group");
-		btnGroup.setBounds(316, 29, 89, 23);
-		add(btnGroup);
+		JButton btnGroups = new JButton("Groups");
+		btnGroups.setBounds(284, 29, 89, 23);
+		add(btnGroups);
+		
 	}
 }
