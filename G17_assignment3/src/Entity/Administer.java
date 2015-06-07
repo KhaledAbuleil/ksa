@@ -18,7 +18,9 @@ protected String getid(){
 	return this.id;
 }
 protected String getname(){
+
 	return this.name;
+	
 }
 
 }

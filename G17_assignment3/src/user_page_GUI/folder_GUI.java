@@ -10,7 +10,14 @@ import javax.swing.JPanel;
 
 public class folder_GUI extends JFrame{
 	public folder_GUI() {
+		getContentPane().setLayout(null);
+		
+		JButton btnChangeName = new JButton("Change Name");
+		btnChangeName.setBounds(10, 21, 129, 23);
+		getContentPane().add(btnChangeName);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(10, 59, 129, 23);
+		getContentPane().add(btnNewButton);
 	}
-	
-
 }
