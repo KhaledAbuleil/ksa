@@ -7,6 +7,7 @@ import java.awt.Color;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 
 public class mainpage extends JFrame {
@@ -36,36 +37,26 @@ public class mainpage extends JFrame {
 		getContentPane().add(userpanel);
 		userpanel.setLayout(null);
 		
-		JButton btnEditFolder = new JButton("File");
-		btnEditFolder.setBounds(227, 11, 83, 23);
-		userpanel.add(btnEditFolder);
-		
 		JButton btnSendRequest = new JButton("Send Request");
 		btnSendRequest.setBounds(368, 11, 99, 23);
 		userpanel.add(btnSendRequest);
 		
-		JButton btnAddFolder = new JButton("Folder");
-		btnAddFolder.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnAddFolder.setBounds(95, 11, 89, 23);
-		userpanel.add(btnAddFolder);
+		JComboBox comboBoxfolder = new JComboBox();
+		comboBoxfolder.setModel(new DefaultComboBoxModel(new String[] {"Folder", "Edit Folder", "Change Name", "Delete"}));
+		comboBoxfolder.setBounds(64, 12, 89, 20);
+		userpanel.add(comboBoxfolder);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(95, 36, 89, 20);
-		userpanel.add(comboBox);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(227, 35, 83, 21);
-		userpanel.add(comboBox_1);
+		JComboBox comboBoxfile = new JComboBox();
+		comboBoxfile.setModel(new DefaultComboBoxModel(new String[] {"File", "Edit File", "Change Name"}));
+		comboBoxfile.setBounds(224, 12, 83, 21);
+		userpanel.add(comboBoxfile);
 		
 		JButton btnNewButton = new JButton("New File");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(368, 45, 99, 23);
+		btnNewButton.setBounds(368, 47, 99, 23);
 		userpanel.add(btnNewButton);
 		
 		JPanel DenamicPanel = new JPanel();

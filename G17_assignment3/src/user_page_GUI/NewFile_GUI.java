@@ -8,11 +8,17 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class NewFile_GUI extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTable table;
 	public NewFile_GUI() {
 		setLayout(null);
 		
@@ -39,7 +45,8 @@ public class NewFile_GUI extends JPanel {
 		add(lblNewLabel);
 		
 		JComboBox comboBox_privellege = new JComboBox();
-		comboBox_privellege.setBounds(65, 260, 28, 20);
+		comboBox_privellege.setModel(new DefaultComboBoxModel(new String[] {"3", "1", "2"}));
+		comboBox_privellege.setBounds(65, 260, 46, 20);
 		add(comboBox_privellege);
 		
 		JLabel lblNewLabel_1 = new JLabel("Describe");
@@ -52,7 +59,7 @@ public class NewFile_GUI extends JPanel {
 		textField_2.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Save");
-		btnNewButton.setBounds(317, 208, 89, 23);
+		btnNewButton.setBounds(316, 259, 89, 23);
 		add(btnNewButton);
 		
 		JLabel lblType = new JLabel("Type");
@@ -60,11 +67,19 @@ public class NewFile_GUI extends JPanel {
 		add(lblType);
 		
 		JComboBox comboBox_type = new JComboBox();
-		comboBox_type.setBounds(160, 260, 28, 20);
+		comboBox_type.setModel(new DefaultComboBoxModel(new String[] {"doc", "img"}));
+		comboBox_type.setBounds(160, 260, 51, 20);
 		add(comboBox_type);
 		
-		JLabel lblNewLabel_2 = new JLabel("Groups");
-		lblNewLabel_2.setBounds(317, 58, 46, 14);
-		add(lblNewLabel_2);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(285, 62, 155, 188);
+		add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		
+		JButton btnGroup = new JButton("Group");
+		btnGroup.setBounds(316, 29, 89, 23);
+		add(btnGroup);
 	}
 }
