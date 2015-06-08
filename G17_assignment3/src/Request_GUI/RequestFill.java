@@ -9,10 +9,12 @@ import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 
 public class RequestFill extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
+   String[] A={"Retire","Join"};
 	public RequestFill() {
 		
 
@@ -28,16 +30,8 @@ public class RequestFill extends JFrame {
 		getContentPane().add(lblGroup);
 		
 		JLabel lblDate = new JLabel("Date");
-		lblDate.setBounds(30, 140, 46, 14);
+		lblDate.setBounds(30, 141, 46, 14);
 		getContentPane().add(lblDate);
-		
-		JCheckBox chckbxRetire = new JCheckBox("Retire");
-		chckbxRetire.setBounds(20, 86, 86, 23);
-		getContentPane().add(chckbxRetire);
-		
-		JCheckBox chckbxJoin = new JCheckBox("Join");
-		chckbxJoin.setBounds(20, 60, 97, 23);
-		getContentPane().add(chckbxJoin);
 		
 		textField = new JTextField();
 		textField.setBounds(86, 113, 86, 20);
@@ -52,6 +46,16 @@ public class RequestFill extends JFrame {
 		JButton btnSend = new JButton("Send");
 		btnSend.setBounds(182, 198, 89, 23);
 		getContentPane().add(btnSend);
+		
+		JComboBox comboBox = new JComboBox(A);
+		comboBox.setEditable(true);
+		comboBox.setBounds(86, 85, 86, 20);	
+		comboBox.setSelectedIndex(2);
+		getContentPane().add(comboBox);
+		
+		JLabel lblType = new JLabel("Type");
+		lblType.setBounds(30, 88, 46, 14);
+		getContentPane().add(lblType);
 		JPanel panel = new JPanel();
 	}
 }

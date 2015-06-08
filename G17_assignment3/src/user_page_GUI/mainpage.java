@@ -38,6 +38,10 @@ public class mainpage extends JFrame {
 		userpanel.setLayout(null);
 		
 		JButton btnSendRequest = new JButton("Send Request");
+		btnSendRequest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnSendRequest.setBounds(368, 11, 99, 23);
 		userpanel.add(btnSendRequest);
 		
