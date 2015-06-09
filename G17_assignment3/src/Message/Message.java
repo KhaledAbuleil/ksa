@@ -3,6 +3,7 @@ package Message;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import Entity.userfiles;
 /**
  * This class used for handling the message object
  */
@@ -22,6 +23,7 @@ public class Message implements Serializable {
 	private String strReturn;
 	private String strToSend;
 	private ArrayList<String> arrList;
+	private userfiles[] userfiles;
 	
 	/**
 	 * default panel
@@ -35,6 +37,7 @@ public class Message implements Serializable {
 		this.setStrReturn(null);
 		this.setStrToSend(null);
 		this.setArrList(null);
+		this.setuserfiles(null);
 	}
 	/**
 	 * Initialize Message parameters 
@@ -50,6 +53,8 @@ public class Message implements Serializable {
 		this.setStrReturn(null);
 		this.setStrToSend(null);
 		this.setArrList(null);
+		this.setuserfiles(null);
+
 	}
 	
 	public ArrayList<String> getArrList() {
@@ -62,7 +67,12 @@ public class Message implements Serializable {
 	public void setArrList(ArrayList<String> arrList) {
 		this.arrList = arrList;
 	}
-
+	public void setuserfiles(userfiles[] userfiles) {
+		this.userfiles = userfiles;
+	}
+	public userfiles[] getuserfiles() {
+		return this.userfiles;
+	}
 	public String getStrToSend() {
 		return strToSend;
 	}

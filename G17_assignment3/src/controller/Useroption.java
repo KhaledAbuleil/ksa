@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import UserPageGUI.FilesSystem;
 import UserPageGUI.RequestFill;
 import UserPageGUI.UploadFile;
 import UserPageGUI.UserMainPageGUI;
@@ -21,6 +22,7 @@ import controller.MainControler;
 import Entity.MyFile;
 import Entity.request;
 import Entity.user;
+import Entity.userfiles;
 import G17Client.ClientConnectTOServer;
 import G17Client.FMSClient;
 import Message.Message;
@@ -30,6 +32,8 @@ public class Useroption implements java.awt.event.ActionListener{
 	private Object request;
 	private static UserPageGUI.RequestFill RequestFill ;
 	static  FMSClient clientConection;
+	private userfiles[] filsys;
+	
 	public Useroption(){
 		if(clientConection == null)
 		{
@@ -136,6 +140,21 @@ public class Useroption implements java.awt.event.ActionListener{
 				e1.printStackTrace();
 			}
 				break;
+			case ("Files System"):
+				
+			{
+             FilesSystem filesys = new FilesSystem(filsys);
+             msg = new Message(filesys,"Files System");
+				try {
+					clientConection.sendToServer(msg);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					System.out.println("creat system files error");
+				}	
+			    break;
+			}
+
  			}
  		
 		}
@@ -145,8 +164,13 @@ public class Useroption implements java.awt.event.ActionListener{
 		ArrayList<String> arr = new ArrayList<String>((ArrayList<String>) msg.getArrList());
 		 
 	}
+	public static void setfilessystem(Message msg){
+		userfiles[] filsys=(msg.getuserfiles());
+
+	}
 	public void addGuiPage( UserMainPageGUI userPage)
 	{
 		this.UserPage=userPage;
+		
 	}
 }

@@ -82,9 +82,14 @@ public class FMSClient extends AbstractClient
 		 break;
 	 }
 	 case "2":
+	 {
 		 Useroption.showInPanl(ServerMsg);
 		 break;
 	 }
+     case "Files System":
+     {
+    	 Useroption.setfilessystem(ServerMsg);
+     }}
 	  
   }
 

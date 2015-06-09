@@ -7,6 +7,7 @@ public class MyFile implements Serializable {
 private String Fname ;
 private String FID;
 private String PhysicleAdd;
+private String vertadd;
 private String Describe;
 private String Type;
 private int Privilege;
@@ -19,16 +20,18 @@ public  byte[] mybytearray;
 
 public  MyFile(){}
 
-public  MyFile( String name , String ID, String Add, String Desc,String type, int Priv,int Remov,int IsUpd,Date updDate){	
-	this.Fname=name;
-	this.FID=ID;
+public  MyFile( String name , String ID, String Add, String Desc,String type, int Priv,int Remov,int IsUpd,Date updDate,String vertadd){	
+		this.FID=ID;
+this.Fname=name;
+	this.Type=type;	
 	this.PhysicleAdd=Add;
 	this.Describe=Desc;
-	this.Type=type;
+
 	this.Privilege=Priv;
 	this.Removed=Remov;
 	this.IsUpdating=IsUpd;
 	//this.updateDate=updDate;
+	this.vertadd=vertadd;
 	
 }
 public void SetOwner(String owner)
@@ -84,6 +87,9 @@ public void setFID(String id){
 public void setPhysicleAdd(String phyadd){
 	this.PhysicleAdd=phyadd;
 }
+public void setvertadd(String vertadd){
+	this.vertadd=vertadd;
+}
 public void setPrivilege(int priv){
 	this.Privilege=priv;
 }
@@ -105,6 +111,9 @@ public String getFname(){
 }
 public String getFID(){
 	return this.FID;
+}
+public String getvertadd(){
+	return this.vertadd;
 }
 public String getPhysicleAdd(){
 	return this.PhysicleAdd;

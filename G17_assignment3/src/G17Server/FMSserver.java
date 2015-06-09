@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import Entity.MyFile;
 import Entity.request;
 import Entity.user;
+import Entity.userfiles;
 import Message.Message;
 import SQLServices.*;
 import ocsf.server.*;
@@ -104,6 +105,22 @@ public class FMSserver extends AbstractServer
 							Group2(clientMsg);
 							break;
 						}
+						case "Files System":
+						{
+							userfiles[] fileslist = new userfiles[2];
+							try {
+								fileslist =getFileslist(clientMsg);
+							} catch (SQLException e) {
+								System.out.println("FMSServer->Cannot get array");
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							clientMsg.setuserfiles(fileslist);
+
+							
+							break;
+						}
+
 							
 				
 			}
@@ -191,6 +208,13 @@ private ArrayList<String> GetfileName(Message msg) throws SQLException
 	 
 ArrayList<String> lst=null;
 lst=new ArrayList<String>(SQLServices.fileSQLServices.GetFileName());
+return lst;
+} 
+private userfiles[] getFileslist(Message msg) throws SQLException
+{
+	 
+	userfiles[] lst=null;
+lst=(userfiles[])(SQLServices.fileSQLServices.getfileslist());
 return lst;
 } 
 

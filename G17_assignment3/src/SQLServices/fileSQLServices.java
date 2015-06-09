@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import Entity.MyFile;
 import Entity.user;
+import Entity.userfiles;
 import G17Server.DataBaseConection;
 
 public class fileSQLServices {
@@ -48,5 +49,39 @@ public class fileSQLServices {
 	      
 			boolean res = ps.execute();
 			ps.close();
+	}
+	public static userfiles[] getfileslist() throws SQLException
+	{
+		userfiles[] fileslist = new userfiles[2];
+		ResultSet rs = null;
+		ResultSet rs1 = null;
+		ResultSet rs2 = null;
+		int i=0;
+
+		//fname
+		     Statement stmt;
+		        stmt = conn.createStatement();
+			         rs = stmt.executeQuery("SELECT f_name FROM file;");
+	   //owner
+			 Statement stmt1 ;
+				 stmt1 = conn.createStatement();
+					 rs1 = stmt1.executeQuery("SELECT f_owner FROM file;");
+		//path
+			 Statement stmt2;
+				 stmt2 = conn.createStatement();
+					 rs2 = stmt2.executeQuery("SELECT f_Vertadd FROM file;");
+	 		while(rs.next())
+	 		{
+				 // Print out the values
+	 			
+	 			fileslist[i].Fname=rs.getString(1); 	
+	 			fileslist[i].vertadd=rs2.getString(1); 	
+	 			fileslist[i].Owner=rs1.getString(1); 
+	 			i++;
+
+			} 
+			rs.close();
+			
+		return fileslist;
 	}
 }
