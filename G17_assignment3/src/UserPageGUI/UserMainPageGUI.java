@@ -21,6 +21,7 @@ public class UserMainPageGUI extends JFrame {
 	private JPanel contentPane;
 	public 	CreateNewFileGUI newFile ;
 	public RequestFill Request;
+	public FliesSystem fs;
 	public  UploadFile upload;
 	public JPanel panel ;
 	public UserMainPageGUI() {
@@ -28,6 +29,7 @@ public class UserMainPageGUI extends JFrame {
 			setBounds(0, 0, 900, 700);
 			Request= new RequestFill();
 			 newFile=new CreateNewFileGUI();
+			 fs = new FliesSystem();
 		contentPane = new JPanel();
 		panel= new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -67,7 +69,13 @@ public class UserMainPageGUI extends JFrame {
 		
 		JButton btnSystemFile = new JButton("Files System");
 		btnSystemFile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				contentPane.remove(panel);
+				panel=fs;
+				fs.setBounds(0,100,646,332);
+				contentPane.add(panel);
+				 repaint();
+
 			}
 		});
 		btnSystemFile.setBounds(369, 21, 99, 28);
