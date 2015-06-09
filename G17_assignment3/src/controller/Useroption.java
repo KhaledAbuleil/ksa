@@ -54,7 +54,6 @@ public class Useroption implements java.awt.event.ActionListener{
 				RqYears=Integer.parseInt((String) mpgui.RequestFill.years.getSelectedItem());
 				Date Rqdate = new Date(RqYears,RqMonths,RqDays);				
 				if(RqType.equals("Join"))
-                request request = new request(intRqGroup,Rqdate,1,Rquname);
 
 				}
 		
