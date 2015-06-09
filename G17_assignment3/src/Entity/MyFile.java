@@ -14,6 +14,7 @@ private int Removed;
 private int IsUpdating;
 private Date updateDate;
 private int size=0;
+private String Owner;
 public  byte[] mybytearray;
 
 public  MyFile(){}
@@ -27,8 +28,16 @@ public  MyFile( String name , String ID, String Add, String Desc,String type, in
 	this.Privilege=Priv;
 	this.Removed=Remov;
 	this.IsUpdating=IsUpd;
-	this.updateDate=updDate;
+	//this.updateDate=updDate;
 	
+}
+public void SetOwner(String owner)
+{
+	this.Owner=owner;
+}
+public String getOwner()
+{
+	return(this.Owner);
 }
 public void initArray(int size)
 {

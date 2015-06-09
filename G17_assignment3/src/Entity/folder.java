@@ -26,7 +26,7 @@ protected void setaddress(String add){
 protected String getfoid(){
 	return this.foid;
 }
-public String getfoname(){
+protected String getfoname(){
 	return this.foname;
 }
 protected String getbackfoid(){

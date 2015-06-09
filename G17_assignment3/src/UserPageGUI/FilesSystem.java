@@ -9,12 +9,13 @@ import controller.MyTreeModelListener;
 import Entity.MyFile;
 import Entity.folder;
 import javax.swing.JButton;
+import SQLServices.fileSQLServices;
 
-public class FliesSystem extends JPanel{
+public class FilesSystem extends JPanel{
 	JTree tree ;
 	DefaultMutableTreeNode rootNode;
 	DefaultTreeModel treeModel;
-	public FliesSystem() {	
+	public FilesSystem() {	
 		setLayout(null);
 	setSize(646,332);
 	 rootNode = new DefaultMutableTreeNode("Root Node");

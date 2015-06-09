@@ -79,9 +79,29 @@ public class FMSserver extends AbstractServer
 									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}
+						case "Get the files name":
+						{
+							ArrayList<String> ls=new ArrayList<String>();
+							try {
+								ls=GetfileName(clientMsg);
+							} catch (SQLException e) {
+								System.out.println("FMSServer->Cannot get array");
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							clientMsg.setArrList(ls);
+
+							
+							break;
+						}
 						case "send request":
 						{
 							SendRequest (clientMsg);
+							break;
+						}
+						case "2":
+						{
+							Group2(clientMsg);
 							break;
 						}
 							
@@ -96,6 +116,8 @@ try {
 }
 
     
+
+
 
 
 /**
@@ -147,7 +169,7 @@ public void userLogIn(Message msg) throws SQLException {
 private void CreateFile(Message msg)throws SQLException, IOException {
 	// TODO Auto-generated method stub
 	MyFile file = (MyFile) msg.getObj();
-
+	SQLServices.fileSQLServices.InsertNewFile(file);
 	ArrayList<String>list=fileSQLServices.GetFileName();
 	for(int i=0;i<list.size();i++)
 	{
@@ -155,7 +177,7 @@ private void CreateFile(Message msg)throws SQLException, IOException {
 			return;
 	}
     byte [] mybytearray  = new byte [file.getSize()];
-    FileOutputStream fos = new FileOutputStream("D:\\FMS\\"+file.getFname()+"."+file.getType());
+    FileOutputStream fos = new FileOutputStream("D:\\ASS2git\\ksa\\G17_assignment3\\FMS\\"+file.getFname()+"."+file.getType());
     fos.write(file.getMybytearray());	 
 	
 	}	
@@ -164,4 +186,21 @@ private void SendRequest (Message msg)
 	request myrequest=(request) msg.getObj();
 	
 }
+private ArrayList<String> GetfileName(Message msg) throws SQLException
+{
+	 
+ArrayList<String> lst=null;
+lst=new ArrayList<String>(SQLServices.fileSQLServices.GetFileName());
+return lst;
+} 
+
+private void Group2(Message clientMsg) {
+	// TODO Auto-generated method stub
+	user username = (user) clientMsg.getObj();
+	ArrayList<String> lst=null;
+	lst=new ArrayList<String>(SQLServices.GroupSQLServices.getGroupsName(
+	SQLServices.GroupSQLServices.getGroupsNum(username.getUsername())));
+	clientMsg.setArrList(lst);
+}
+
 }

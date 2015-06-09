@@ -19,7 +19,7 @@ import G17Client.ClientConnectTOServer;
 import G17Client.FMSClient;
 import G17Client.LogInGUI;
 import Message.Message;
-import UserPageGUI.FliesSystem;
+import UserPageGUI.FilesSystem;
 import UserPageGUI.UserMainPageGUI;
 import common.ChatIF;
 
@@ -37,14 +37,15 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 	static int portInt;
 	static String serverAdd = null;
 	static String port="0000" ;
-static FliesSystem fs;
+    static FilesSystem fs;
+public static 	  LogInGUI LogInPage;
 	public static void main(String[] args) throws IOException, InterruptedException {
 		mainFram = new JFrame("Main Frame");
 		mainFram.setSize(800, 700);
 		mainFram.getContentPane().setLayout(null);
 		mainFram.setVisible(true);
-	cctsg = new ClientConnectTOServer();
-	  LogInGUI LogInPage=new LogInGUI(); 
+		cctsg = new ClientConnectTOServer();
+		LogInPage=new LogInGUI(); 
 
 		cctsg.ServerIP.setText("192.168.56.1");
 		mainPanel=cctsg.ConnectPanel;
@@ -112,11 +113,13 @@ static FliesSystem fs;
 	{
 	 user user = (user) msg.getObj();
 	 System.out.println(user.getRole());
-	switch(user.getRole()){
+	 LogInPage.btnLogin.setVisible(true);
+	 	switch(user.getRole()){
 		 case "user":
 			 	mainFram.setVisible(false);
 				Useroption userOp=new Useroption();//Control For UserPage
 				UserMainPageGUI userPage = new UserMainPageGUI();;//The User page
+				userPage.lbllogIIn.setText(LogInPage.getUserTextField().getText());
 				userPage.setVisible(true);
 				userOp.addGuiPage(userPage);
 				userPage.newFile.addController(userOp);

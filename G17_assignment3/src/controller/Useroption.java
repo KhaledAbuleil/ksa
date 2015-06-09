@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -24,7 +26,7 @@ import G17Client.FMSClient;
 import Message.Message;
 public class Useroption implements java.awt.event.ActionListener{
 	private static final ActionListener Useroption = null;
-	private UserMainPageGUI UserPage;
+	private static UserMainPageGUI UserPage;
 	private Object request;
 	private static UserPageGUI.RequestFill RequestFill ;
 	static  FMSClient clientConection;
@@ -49,8 +51,18 @@ public class Useroption implements java.awt.event.ActionListener{
 		switch (e.getActionCommand()) 
 		{
 		case ("Upload File"):
+			  MyFile names= new MyFile();
 			UserPage.upload=new UploadFile();
-			
+		UserPage.newFile.Location.setText(UserPage.upload.SelectedPath());
+	
+		  Message msg = new Message(names,"Get the files name");
+			try {
+				clientConection.sendToServer(msg);
+			} catch (IOException e2) {
+				System.out.println("UserOPtion->Can not get Arraylist");
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}	
  			 break;
 		case ("Save"):
 				if((UserPage.newFile.TheFileName.getText()).equals(""))
@@ -64,6 +76,11 @@ public class Useroption implements java.awt.event.ActionListener{
 				else
 				if(UserPage.upload.SelectedPath()==null)
 					JOptionPane.showMessageDialog(UserPage,"upload a file");
+				else
+					if(CheckInput.checkInput.CheckTheFileName(UserPage.newFile.TheFileName.getText()))
+					{
+						JOptionPane.showMessageDialog(UserPage,"insert another name");
+					}
 				else{
 	 			  MyFile CreateFile= new MyFile();
 	 			  try{
@@ -73,14 +90,15 @@ public class Useroption implements java.awt.event.ActionListener{
 	 				      byte [] mybytearray  = new byte [(int)newFile.length()];
 	 				      FileInputStream fis = new FileInputStream(newFile);
 	 				     BufferedInputStream bis = new BufferedInputStream(fis);			  
-	 				      
-	 				     CreateFile.initArray(mybytearray.length);
+	 				    CreateFile.SetOwner(UserPage.lbllogIIn.getText());
+	 				    CreateFile.initArray(mybytearray.length);
+	 				   CreateFile.setPhysicleAdd(UserPage.upload.SelectedPath());
 	 				    CreateFile.setSize(mybytearray.length);
 	 				     CreateFile.setFname(UserPage.newFile.TheFileName.getText());
 	 				    CreateFile.setType(UserPage.upload.getFileType());
 	 				   CreateFile.setDescribe(UserPage.newFile.DescribeField.getText());
 	 				  CreateFile.setPrivilege(Integer.parseInt(UserPage.newFile.comboBox_privellege.getSelectedItem().toString()));
-	 				     Message msg = new Message(CreateFile,"Create File");
+	 				      msg = new Message(CreateFile,"Create File");
 	 				    bis.read(CreateFile.getMybytearray(),0,mybytearray.length);
 	 				    clientConection.sendToServer(msg);		      
 	 				    }
@@ -97,18 +115,36 @@ public class Useroption implements java.awt.event.ActionListener{
 			request user_request=new request();
 			user_request.setRname(UserPage.Request.GroupTxt.getText());
 			user_request.setRtype(UserPage.Request.type.getSelectedItem().toString());
-		     Message msg = new Message(user_request,"send request");
+		      msg = new Message(user_request,"send request");
 		    try {
 				clientConection.sendToServer(msg);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 				System.out.println("useroption->send request error");
-			}		      
+			}	
+		    break;
 		    }
+			case("2"):
+				user username=new user();
+			username.setUsername(UserPage.lbllogIIn.getText());
+				msg = new Message(username,"2");
+			try {
+				clientConection.sendToServer(msg);
+			} catch (IOException e1) {
+				System.out.println("Useroption->selected privellege is 2");
+				e1.printStackTrace();
+			}
+				break;
  			}
  		
 		}
+	
+	public static  void showInPanl(Message msg)
+	{
+		ArrayList<String> arr = new ArrayList<String>((ArrayList<String>) msg.getArrList());
+		 
+	}
 	public void addGuiPage( UserMainPageGUI userPage)
 	{
 		this.UserPage=userPage;

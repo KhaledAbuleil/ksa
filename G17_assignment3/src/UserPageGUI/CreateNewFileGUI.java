@@ -28,16 +28,37 @@ import java.awt.Label;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
-import java.awt.TextArea;
 
+import java.awt.TextArea;
+import java.awt.Color;
+
+import javax.swing.JTree;
+import javax.swing.JCheckBox;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+/**
+  *this class is used to generate a GUI page that 
+  *This page is responsible for 
+  *Create a new File,insert details and upload it
+  *
+ * @author saeed,khaled,anita
+ *
+ */
 public class CreateNewFileGUI extends JPanel {
 	public JTextField TheFileName;
-	public JTextField textField_1;
-	private JTable table;
+	public JTextField Location;//show the file location  from the client 
 	public  JButton btnUploadfile;
 	public  JButton btnSaveButton;
 	public JComboBox comboBox_privellege;
 	public TextArea DescribeField;
+	private JTree tree_1;
+	private JTree tree;
+	private JCheckBox chckbxNewCheckBox;
+
+	/**
+	 * Default Constructor,which Constructs 
+	 * a panel for Creating a new File
+	 */
 	public CreateNewFileGUI() {
 		setLayout(null);
 		setSize(646,332);
@@ -45,61 +66,57 @@ public class CreateNewFileGUI extends JPanel {
 		add(lblName);
 		
 		TheFileName = new JTextField();
-		TheFileName.setBounds(161, 30, 196, 20);
+		TheFileName.setBounds(115, 30, 236, 20);
 		add(TheFileName);
 		TheFileName.setColumns(10);
 		
 		JLabel lblLocation = new JLabel("Location");
-		lblLocation.setBounds(105, 238, 46, 14);
+		lblLocation.setBounds(78, 238, 46, 14);
 		add(lblLocation);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(161, 235, 206, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
+		Location = new JTextField();
+		Location.setBackground(Color.WHITE);
+		Location.setForeground(Color.RED);
+		Location.setEnabled(false);
+		Location.setEditable(false);
+		Location.setBounds(134, 235, 149, 20);
+		add(Location);
+		Location.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Privellege");
-		lblNewLabel.setBounds(271, 266, 46, 14);
+		lblNewLabel.setBounds(78, 278, 46, 14);
 		add(lblNewLabel);
 		
 		 comboBox_privellege = new JComboBox();
 		comboBox_privellege.setModel(new DefaultComboBoxModel(new String[] {"3", "1", "2"}));
-		comboBox_privellege.setBounds(342, 260, 46, 20);
+		comboBox_privellege.setBounds(171, 275, 46, 20);
+		
 		add(comboBox_privellege);
 		
 		JLabel lblNewLabel_1 = new JLabel("Describe");
-		lblNewLabel_1.setBounds(105, 61, 46, 14);
+		lblNewLabel_1.setBounds(39, 61, 60, 14);
 		add(lblNewLabel_1);
 		
 		 btnSaveButton = new JButton("Save");
 
-		btnSaveButton.setBounds(462, 262, 89, 23);
+		btnSaveButton.setBounds(282, 274, 89, 23);
 		add(btnSaveButton);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(370, 60, 179, 188);
-		add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		
-		JButton btnGroups = new JButton("Groups");
-		btnGroups.setBounds(489, 29, 89, 23);
-		add(btnGroups);
-		
 		 btnUploadfile = new JButton("Upload File");
-		btnUploadfile.setBounds(370, 29, 89, 23);
+		btnUploadfile.setBounds(282, 234, 89, 23);
 		add(btnUploadfile);
 		
 		Label label = new Label("File Name");
-		label.setBounds(105, 28, 51, 22);
+		label.setBounds(39, 28, 60, 22);
 		add(label);
 		
 		 DescribeField = new TextArea();
-		DescribeField.setBounds(161, 56, 196, 160);
+		DescribeField.setBounds(115, 56, 244, 176);
 		add(DescribeField);
 		
 
+
+		
 		
 		
 
@@ -109,7 +126,7 @@ public class CreateNewFileGUI extends JPanel {
 		System.out.print("mainpage pnl->newfiler");
 		btnSaveButton.addActionListener(controller);
 		btnUploadfile.addActionListener(controller);
-	
+		comboBox_privellege.addActionListener(controller);
 	
 	}
 	}

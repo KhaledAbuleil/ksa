@@ -7,8 +7,10 @@ package G17Client;
 import ocsf.client.*;
 
 import java.io.*;
+import java.util.ArrayList;
 
 import controller.MainControler;
+import controller.Useroption;
 import Message.Message;
 
 
@@ -74,6 +76,14 @@ public class FMSClient extends AbstractClient
 		 MainControler.userRole(ServerMsg);
 		 break;
 	 }
+	 case "Get the files name":
+	 {
+		 CheckInput.checkInput.names=new ArrayList<String>((ServerMsg.getArrList()));
+		 break;
+	 }
+	 case "2":
+		 Useroption.showInPanl(ServerMsg);
+		 break;
 	 }
 	  
   }
