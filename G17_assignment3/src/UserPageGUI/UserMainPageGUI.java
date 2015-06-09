@@ -59,7 +59,11 @@ public class UserMainPageGUI extends JFrame {
 		btnSendRequest.setBounds(238, 21, 99, 28);
 		contentPane.add(btnSendRequest);
 		
-		JButton btnSystemFile = new JButton("System File");
+		JButton btnSystemFile = new JButton("Files System");
+		btnSystemFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnSystemFile.setBounds(369, 21, 99, 28);
 		contentPane.add(btnSystemFile);
 		
