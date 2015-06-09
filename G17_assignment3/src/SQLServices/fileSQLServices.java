@@ -23,7 +23,6 @@ public class fileSQLServices {
 			 rs = stmt.executeQuery("SELECT f_name FROM file;");
 	 		while(rs.next())
 	 		{
-				 // Print out the values
 	 			names.add(rs.getString(1));
 			} 
 			rs.close();
