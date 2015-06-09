@@ -61,22 +61,16 @@ public class fileSQLServices {
 		//fname
 		     Statement stmt;
 		        stmt = conn.createStatement();
-			         rs = stmt.executeQuery("SELECT f_name FROM file;");
-	   //owner
-			 Statement stmt1 ;
-				 stmt1 = conn.createStatement();
-					 rs1 = stmt1.executeQuery("SELECT f_owner FROM file;");
-		//path
-			 Statement stmt2;
-				 stmt2 = conn.createStatement();
-					 rs2 = stmt2.executeQuery("SELECT f_Vertadd FROM file;");
+			         rs = stmt.executeQuery("SELECT 'f_name','f_owner','f_Vertadd' FROM file;");
+	  
 	 		while(rs.next())
 	 		{
 				 // Print out the values
 	 			
 	 			fileslist[i].Fname=rs.getString(1); 	
-	 			fileslist[i].vertadd=rs2.getString(1); 	
-	 			fileslist[i].Owner=rs1.getString(1); 
+	 			fileslist[i].Owner=rs1.getString(2); 	 
+	 			fileslist[i].vertadd=rs2.getString(3); 	
+
 	 			i++;
 
 			} 

@@ -214,7 +214,7 @@ private userfiles[] getFileslist(Message msg) throws SQLException
 {
 	 
 	userfiles[] lst=null;
-lst=(userfiles[])(SQLServices.fileSQLServices.getfileslist());
+lst=(userfiles[])(fileSQLServices.getfileslist());
 return lst;
 } 
 

@@ -27,6 +27,10 @@ public userfiles[] usefil;
 		setLayout(null);
 	setSize(646,332);
      add(this.defaultree());
+     
+     JButton btnFilesSystem = new JButton("Files System");
+     btnFilesSystem.setBounds(269, 110, 108, 23);
+     add(btnFilesSystem);
 	}
 	public FilesSystem(userfiles[] uf) {
 		this.usefil=uf;
@@ -94,8 +98,6 @@ public DefaultMutableTreeNode sysbuild(String username){
 	
 	return treeNode;
 	}
-
-
 }
 
 
