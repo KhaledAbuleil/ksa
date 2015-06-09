@@ -19,6 +19,7 @@ import G17Client.ClientConnectTOServer;
 import G17Client.FMSClient;
 import G17Client.LogInGUI;
 import Message.Message;
+import UserPageGUI.FilesSystem;
 import UserPageGUI.UserMainPageGUI;
 import common.ChatIF;
 
@@ -36,7 +37,7 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 	static int portInt;
 	static String serverAdd = null;
 	static String port="0000" ;
-
+static FilesSystem fs;
 	public static void main(String[] args) throws IOException, InterruptedException {
 		mainFram = new JFrame("Main Frame");
 		mainFram.setSize(800, 700);
@@ -124,7 +125,7 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 				break;
 	 }
 	}
-	
+
 	public static FMSClient getInstance() {
 		if (clientConection == null)
 			try {
@@ -135,5 +136,4 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 			}
 		return clientConection;
 	}
-
 }
