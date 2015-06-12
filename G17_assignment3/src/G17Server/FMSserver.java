@@ -4,9 +4,12 @@ package G17Server;
 // license found at www.lloseng.com 
 
 import java.io.*;
+import java.sql.SQLException;
 
+import Entity.user;
+import Message.Message;
+import SQLServices.UserServices;
 import ocsf.server.*;
-import common.*;
 
 /**
  * This class overrides some of the methods in the abstract 
@@ -33,9 +36,12 @@ public class FMSserver extends AbstractServer
    *
    * @param port The port number to connect on.
    */
-  public FMSserver(int port) 
+	  private FMSSErverGUI serverUI;
+  public FMSserver(FMSSErverGUI serverUI) 
   {
-    super(port);
+	  super();
+	  this.serverUI = serverUI;
+	  serverUI.setVisible(true);
   }
 
   
@@ -48,12 +54,20 @@ public class FMSserver extends AbstractServer
    * @param client The connection from which the message originated.
    */
   public void handleMessageFromClient
-    (Object msg, ConnectionToClient client)
-  {
-	  //int fileSize =((MyFile)msg).getSize(); 
-	  System.out.println("Message received: " + msg + " from " + client);
-	  //System.out.println("length "+ fileSize);
-	  }
+  (Object msg, ConnectionToClient client)
+{
+	  Message clientMsg = (Message)msg;
+switch(clientMsg.getMsg()){
+						case "UserLogIn":
+							try {
+								userLogIn(clientMsg);
+								break;
+							} catch (SQLException e) {
+								e.printStackTrace();
+				}
+				
+			}
+}
 
     
   /**
@@ -88,4 +102,14 @@ public String serverStoppedPrint() {
 	return  ("Server has stopped listening for connections.");
 }
 
+private void userLogIn(Message msg) throws SQLException {
+	user user = (user) msg.getObj();
+	user= UserServices.getUser(user.getUsername(), user.getPassword());
+	if(user == null)
+		msg.setObj(null);
+	else
+		msg.setObj(user);
+	msg.setStatus(true);
+	msg.setStatusMsg("done");
+}
 }

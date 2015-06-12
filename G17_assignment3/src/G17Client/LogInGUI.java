@@ -1,4 +1,4 @@
-package user_page_GUI;
+package G17Client;
 
 import java.awt.EventQueue;
 
@@ -8,7 +8,6 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-import Entity.user;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -19,11 +18,11 @@ import java.awt.Color;
 
 
 /**
- * class for the LogIn main page frame
+ * class for the login main page frame
  * @author G6
  *
  */
-public class LogIn extends JFrame{
+public class LogInGUI extends JFrame{
 
 	public JButton btnLogin;
 	private JFrame frame;
@@ -60,6 +59,7 @@ public class LogIn extends JFrame{
  */
 	private JTextField textUserName;
 	private JTextField passwordField;
+	private JLabel lblFileManagementSystem;
 	
 	
 	
@@ -70,27 +70,7 @@ public class LogIn extends JFrame{
 	public void setPasswordField(JPasswordField passwordField) {
 		this.passwordField = passwordField;
 	}
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LogIn window = new LogIn();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public LogIn() {
+	public LogInGUI() {
 		initialize();
 	}
 
@@ -104,12 +84,12 @@ public class LogIn extends JFrame{
 		frame.getContentPane().setLayout(null);
 		
 		panel = new JPanel();
-		panel.setBackground(Color.GRAY);
-		panel.setBounds(22, 11, 487, 278);
+		panel.setBounds(100, 30, 500, 500);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		textUserName = new JTextField();
+		textUserName.setText("client");
 		textUserName.setBounds(229, 80, 114, 20);
 		panel.add(textUserName);
 		textUserName.setColumns(10);
@@ -123,19 +103,20 @@ public class LogIn extends JFrame{
 		panel.add(lblPassword);
 		
 		btnLogin = new JButton("LogIn");
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
+
 
 		btnLogin.setBounds(173, 193, 89, 23);
 		panel.add(btnLogin);
 		
 		passwordField = new JTextField();
+		passwordField.setText("123");
 		passwordField.setBounds(229, 127, 114, 17);
 		panel.add(passwordField);
 		passwordField.setColumns(10);
+		
+		lblFileManagementSystem = new JLabel("file management system");
+		lblFileManagementSystem.setBounds(158, 25, 138, 14);
+		panel.add(lblFileManagementSystem);
 		
 		
 		/*btnLogin.addActionListener(new ActionListener() {
@@ -156,6 +137,7 @@ public class LogIn extends JFrame{
 		
 		
 	}
+	
 	public void addController(ActionListener controller){
 		System.out.print("logIn pnl->Add controller");
 		btnLogin.addActionListener(controller);

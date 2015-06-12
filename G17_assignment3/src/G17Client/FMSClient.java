@@ -5,8 +5,9 @@
 package G17Client;
 
 import ocsf.client.*;
-import common.*;
+
 import java.io.*;
+
 
 /**
  * This class overrides some of the methods defined in the abstract
@@ -17,15 +18,15 @@ import java.io.*;
  * @author Fran&ccedil;ois B&eacute;langer
  * @version July 2000
  */
-public class ChatClient extends AbstractClient
+public class FMSClient extends AbstractClient
 {
+	private ClientConnectTOServer clientUI;
   //Instance variables **********************************************
   
   /**
    * The interface type variable.  It allows the implementation of 
    * the display method in the client.
-   */
-  ChatIF clientUI; 
+
 
   
   //Constructors ****************************************************
@@ -38,12 +39,18 @@ public class ChatClient extends AbstractClient
    * @param clientUI The interface type variable.
    */
   
-  public ChatClient(String host, int port, ChatIF clientUI) 
+	public FMSClient(String host, int port) throws IOException {
+		super(host, port); // Call the superclass constructor
+		openConnection();
+		this.clientUI = new ClientConnectTOServer();
+	}
+  public FMSClient(String host, int port, ClientConnectTOServer clientUI) 
     throws IOException 
   {
     super(host, port); //Call the superclass constructor
     this.clientUI = clientUI;
     openConnection();
+    clientUI.textPane.append("Connection Succeded");
   }
 
   
@@ -56,7 +63,7 @@ public class ChatClient extends AbstractClient
    */
   public void handleMessageFromServer(Object msg) 
   {
-    clientUI.display(msg.toString());
+    //clientUI.display(msg.toString());
   }
 
   /**
@@ -72,8 +79,8 @@ public class ChatClient extends AbstractClient
     }
     catch(IOException e)
     {
-      clientUI.display
-        ("Could not send message to server.  Terminating client.");
+      //clientUI.display
+        //("Could not send message to server.  Terminating client.");
       quit();
     }
   }

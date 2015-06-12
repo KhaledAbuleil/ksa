@@ -9,8 +9,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 
-import G17ServerControlers.DataBaseConection;
-
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -31,8 +29,10 @@ public class FMSSErverGUI extends JFrame {
 	private JTextField DBtext;
 	private JButton btnDisconnect;
 	private JScrollPane scrollPane;
-	private DataBaseConection DBCON;
+	protected DataBaseConection DBCON;
+	private JTextField textField;
 	public FMSSErverGUI() {
+
 		getContentPane().setLayout(null);
 		lblConnecttoserver = new JLabel("ConnectToServer");
 		lblConnecttoserver.setBounds(209, 0, 200, 50);
@@ -41,6 +41,7 @@ public class FMSSErverGUI extends JFrame {
 		lblUsername = new JLabel("UserName:");
 		lblUsername.setBounds(159, 34, 75, 50);
 		usernameField = new JTextField();
+		usernameField.setText("root");
 		usernameField.setBounds(244, 49, 139, 20);
 		getContentPane().add(lblUsername);
 		getContentPane().add(usernameField);
@@ -50,8 +51,19 @@ public class FMSSErverGUI extends JFrame {
 		lblPassword.setBounds(159, 80, 66, 50);
 		passwordField = new JPasswordField();
 		passwordField.setBounds(244, 95, 139, 20);
+		passwordField.setText("Braude");
 		getContentPane().add(lblPassword);
 		getContentPane().add(passwordField);
+		
+		   JLabel lblPort = new JLabel("Port:");
+		   lblPort.setBounds(159, 192, 46, 14);
+		   getContentPane().add(lblPort);
+		   
+		   textField = new JTextField();
+		   textField.setBounds(244, 189, 139, 20);
+		   textField.setText("4444");
+		   getContentPane().add(textField);
+		   textField.setColumns(10);
 		
 		lblDb = new JLabel("DB:");
 		lblDb.setBounds(159, 126, 66, 50);
@@ -62,14 +74,13 @@ public class FMSSErverGUI extends JFrame {
 		getContentPane().add(DBtext);
 		
 		 btnConnect = new JButton("Connect");
-		 btnConnect.setBounds(145, 194, 89, 23);
+		 btnConnect.setBounds(143, 220, 89, 23);
 		getContentPane().add(btnConnect);
 		
 		btnDisconnect = new JButton("disconnect");
-		btnDisconnect.setBounds(300, 194, 116, 23);
+		btnDisconnect.setBounds(292, 220, 116, 23);
 		getContentPane().add(btnDisconnect);
 		
-
 		  
 		  btnConnect.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -89,27 +100,42 @@ public class FMSSErverGUI extends JFrame {
 						textPane.setText("DataBase doesn't exist.");
 						DBtext.setText(DBCON.GetDataBaseName());
 					}
-					else{
+					else if(!(DBtext.getText().equals(DBCON.GetDataBaseName())))
+					{
+						textPane.setText("DataBase doesn't exist.");
+						DBtext.setText(DBCON.GetDataBaseName());
+					}
+					else if(!(textField.getText().equals(DBCON.GetPort())))
+						{
+						
+							textPane.setText("insert defult port doesn't exist.");
+							textField.setText(DBCON.GetPort());
+						}
+						else{	
 					try {
+							server.setPort((Integer.parseInt(DBCON.GetPort())));
 							server.listen();
+							
+							
+							textPane.append(server.serverStartedPrint()+"\n");
+							textPane.append("server IP:"+getIPAddress()+"\n");
+							textPane.append("DataBase Name:"+DBCON.GetDataBaseName()+"\n");
+							
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}		
-						server.serverStarted();
-						textPane.append(server.serverStartedPrint()+"\n");
-						textPane.append(getIPAddress()+"\n");
-					}
-				}
-			});
+
+					
+						}}
+					});
 		  
 			btnDisconnect.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					usernameField.setText(null);
-					passwordField.setText(null);
-					DBtext.setText(null);
+					usernameField.setText(DBCON.GetUsername());
+					passwordField.setText(DBCON.GetPassword());
+					DBtext.setText(DBCON.GetDataBaseName());
 					server.stopListening();
-					server.serverStopped();
 					textPane.setText(server.serverStoppedPrint());
 				}
 			});
@@ -123,6 +149,8 @@ public class FMSSErverGUI extends JFrame {
 			  
 			   scrollPane.setViewportView(textPane);
 			   textPane.setBackground(Color.LIGHT_GRAY);
+			   
+
 		
 	}
 	private void SetServer(FMSserver server)
@@ -148,14 +176,14 @@ public class FMSSErverGUI extends JFrame {
 		// TODO Auto-generated method stub
 		DataBaseConection DBCON=new DataBaseConection();
 		FMSSErverGUI serverGUI=new FMSSErverGUI();
-		FMSserver server=new FMSserver(Integer.parseInt(DBCON.GetPort()));
-		serverGUI.SetServer(server);
 		serverGUI.SetDataBase(DBCON);
+		
+		FMSserver server=new FMSserver(serverGUI);
+		serverGUI.SetServer(server);
 		serverGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		serverGUI.setBounds(150,150, 600, 600);
 		serverGUI.setTitle("File Management System  Server");
-		serverGUI.setVisible(true);
+	
 
-		
 	}
 }
