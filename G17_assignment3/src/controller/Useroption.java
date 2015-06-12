@@ -12,13 +12,13 @@ import javax.swing.JOptionPane;
 import controller.MainControler;
 import Entity.request;
 import G17Client.ChatClient;
+import user_page_GUI.RequestFill;
 import user_page_GUI.mainpage;
-import Request_GUI.RequestFill;
 public class Useroption implements java.awt.event.ActionListener{
 	private static final ActionListener Useroption = null;
 	private mainpage mpgui;
 	private Object request;
-	private static Request_GUI.RequestFill RequestFill ;
+	private static user_page_GUI.RequestFill RequestFill ;
 	private static ChatClient clientConection;
 	
 	public Useroption(){

@@ -14,8 +14,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.border.EmptyBorder;
 
-import Request_GUI.RequestFill;;
-
 
 public class mainpage extends JFrame {
 	JPanel centerPanel;
@@ -49,7 +47,7 @@ public class mainpage extends JFrame {
 		Adminpanel.add(btnSendMessage);
 		
 		JPanel userpanel = new JPanel();
-		userpanel.setBounds(0, 10, 533, 81);
+		userpanel.setBounds(0, 10, 543, 81);
 		getContentPane().add(userpanel);
 		userpanel.setLayout(null);
 		
