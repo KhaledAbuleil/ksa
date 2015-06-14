@@ -21,7 +21,6 @@ import user_page_GUI.RequestFill;
 import user_page_GUI.mainpage;
 import G17Client.LogInGUI;
 import Message.Message;
-import G17Client.FMSClient;
 
 import javax.swing.JPanel;
 
@@ -82,6 +81,7 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 		if(clientConection != null){
 			LogInPage = new LogInGUI();
 			TimeUnit.SECONDS.sleep(2);
+			cctsg.ConnectPanel.setVisible(false);
 			mainPanel=LogInPage.panel;
 			mainFram.setContentPane(mainPanel);
 			mainFram.getContentPane().setLayout(null);
@@ -89,18 +89,34 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 	
 	   LogInPage.addController(MainControler);
 		LogInPage.btnLogin.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
 				user Client = new user(LogInPage.getUserTextField().getText(),LogInPage.getPasswordField().getText());
 				Message msg = new Message(Client,"UserLogIn");
 				try {
-					clientConection.sendToServer(msg);
-				} catch (IOException e1) {
-					System.out.println("mainControlee");
-					e1.printStackTrace();
-				}
+						clientConection.sendToServer(msg);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 			}
 		});
-	}	
+	}
+	public static void userRole(Message msg)
+	{
+	 user user = (user) msg.getObj();
+	 JPanel adminmainPanel;
+	switch(user.getRole()){
+		 case "admin":
+			 mainpage adminPage=new mainpage();
+			 Useroption Myoption=new Useroption();
+			 Myoption.addGuiPage(adminPage);
+					 LogInPage.panel.setVisible(false);;
+					 mainPanel=adminPage.adminpanel;
+				mainFram.setContentPane(mainPanel);
+				mainFram.getContentPane().setLayout(null);
+	 }
+	}
 	
 
 	public static FMSClient getInstance() {

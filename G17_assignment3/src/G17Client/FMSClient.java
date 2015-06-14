@@ -8,6 +8,9 @@ import ocsf.client.*;
 
 import java.io.*;
 
+import controller.MainControler;
+import Message.Message;
+
 
 /**
  * This class overrides some of the methods defined in the abstract
@@ -63,7 +66,14 @@ public class FMSClient extends AbstractClient
    */
   public void handleMessageFromServer(Object msg) 
   {
-    //clientUI.display(msg.toString());
+	  Message ServerMsg = (Message)msg;
+	 switch( ServerMsg.getMsg())
+	 {
+	 case "UserLogIn":
+		 MainControler.userRole(ServerMsg);
+	 }
+	 
+	  
   }
 
   /**

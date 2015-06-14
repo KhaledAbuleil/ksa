@@ -11,19 +11,15 @@ import javax.swing.JOptionPane;
 
 import controller.MainControler;
 import Entity.request;
-import G17Client.ChatClient;
 import user_page_GUI.RequestFill;
 import user_page_GUI.mainpage;
 public class Useroption implements java.awt.event.ActionListener{
 	private static final ActionListener Useroption = null;
-	private mainpage mpgui;
+	private mainpage adminPage;
 	private Object request;
 	private static user_page_GUI.RequestFill RequestFill ;
-	private static ChatClient clientConection;
 	
 	public Useroption(){
-		if(clientConection == null)
-		clientConection = MainControler.getInstance();
 	}
 
 	@Override
@@ -46,15 +42,19 @@ public class Useroption implements java.awt.event.ActionListener{
 				int RqMonths;
 				String Rquname;
 				int intRqGroup;
-				intRqGroup=Integer.parseInt(RqGroup);
-				RqGroup = mpgui.RequestFill.textgroup.getText();
-				RqType=(String) mpgui.RequestFill.type.getSelectedItem();
-				RqDays=Integer.parseInt((String) mpgui.RequestFill.days.getSelectedItem());
-				RqMonths=Integer.parseInt((String) mpgui.RequestFill.months.getSelectedItem());
-				RqYears=Integer.parseInt((String) mpgui.RequestFill.years.getSelectedItem());
-				Date Rqdate = new Date(RqYears,RqMonths,RqDays);				
-				if(RqType.equals("Join"))
+			//	intRqGroup=Integer.parseInt(RqGroup);
+				//RqGroup = mpgui.RequestFill.textgroup.getText();
+				//RqType=(String) mpgui.RequestFill.type.getSelectedItem();
+				//RqDays=Integer.parseInt((String) mpgui.RequestFill.days.getSelectedItem());
+			//	RqMonths=Integer.parseInt((String) mpgui.RequestFill.months.getSelectedItem());
+				//RqYears=Integer.parseInt((String) mpgui.RequestFill.years.getSelectedItem());
+				//Date Rqdate = new Date(RqYears,RqMonths,RqDays);				
+				//if(RqType.equals("Join"));
 
-				}
-		
-}}
+		}
+	}
+	public void addGuiPage( mainpage adminPage)
+	{
+		this.adminPage=adminPage;
+	}
+}

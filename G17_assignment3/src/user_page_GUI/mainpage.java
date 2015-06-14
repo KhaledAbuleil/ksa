@@ -10,86 +10,51 @@ import javax.swing.JComboBox;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTree;
 
 
 public class mainpage extends JFrame {
-	JPanel centerPanel;
-	private JPanel contentPane;
-	public RequestFill RequestFill;
+	public JPanel mainpanel;
+	public JPanel userpanel;
+	public JPanel adminpanel;
+	public JPanel denamic;
+	private JTree tree;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+	
 	public mainpage() {
-		centerPanel = new JPanel();
-		contentPane = new JPanel();
-
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		setBackground(Color.BLUE);
+		
 		getContentPane().setLayout(null);
+		mainpanel = new JPanel();
+		mainpanel.setBounds(10, 0, 935, 647);
+		getContentPane().add(mainpanel);
+		mainpanel.setLayout(null);
 		
-		JPanel Adminpanel = new JPanel();
-		Adminpanel.setBounds(553, 10, 135, 447);
-		getContentPane().add(Adminpanel);
-		Adminpanel.setLayout(null);
+		userpanel= new JPanel();
+		userpanel.setBounds(10, 11, 904, 114);
+		mainpanel.add(userpanel);
 		
-		JButton btnEditGroup = new JButton("Edit Group");
-		btnEditGroup.setBounds(10, 77, 95, 23);
-		Adminpanel.add(btnEditGroup);
-		
-		JButton btnEditUser = new JButton("Edit User");
-		btnEditUser.setBounds(10, 127, 101, 23);
-		Adminpanel.add(btnEditUser);
-		
-		JButton btnSendMessage = new JButton("Send Message");
-		btnSendMessage.setBounds(10, 177, 101, 23);
-		Adminpanel.add(btnSendMessage);
-		
-		JPanel userpanel = new JPanel();
-		userpanel.setBounds(0, 10, 543, 81);
-		getContentPane().add(userpanel);
-		userpanel.setLayout(null);
-		
-		RequestFill= new RequestFill();
-		
-		JComboBox comboBoxfolder = new JComboBox();
-		comboBoxfolder.setModel(new DefaultComboBoxModel(new String[] {"Folder", "Edit Folder", "Change Name", "Delete"}));
-		comboBoxfolder.setBounds(64, 12, 89, 20);
-		userpanel.add(comboBoxfolder);
-		
-		JComboBox comboBoxfile = new JComboBox();
-		comboBoxfile.setModel(new DefaultComboBoxModel(new String[] {"File", "Edit File", "Change Name"}));
-		comboBoxfile.setBounds(224, 12, 83, 21);
-		userpanel.add(comboBoxfile);
-		
-		JButton btnNewButton = new JButton("New File");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBounds(368, 47, 99, 23);
+		btnNewButton = new JButton("New button");
 		userpanel.add(btnNewButton);
-		JButton btnSendRequest = new JButton("Send Request");
-		btnSendRequest.setBounds(368, 11, 99, 23);
-		userpanel.add(btnSendRequest);
-		btnSendRequest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				
-				contentPane.remove(centerPanel);
-				centerPanel = RequestFill;
-				centerPanel .setBounds(171, 11, 619, 451);
-				contentPane.add(centerPanel );
-				
-                repaint();
-                	
-			}
-		});
 		
-		JPanel DenamicPanel = new JPanel();
-		DenamicPanel.setBounds(10, 102, 533, 214);
-		getContentPane().add(DenamicPanel);
-		DenamicPanel.setLayout(null);
+		 adminpanel = new JPanel();
+		adminpanel.setBounds(705, 136, 220, 477);
+		mainpanel.add(adminpanel);
+		
+		btnNewButton_1 = new JButton("New button");
+		adminpanel.add(btnNewButton_1);
+		
+		denamic = new JPanel();
+		denamic.setBounds(28, 136, 667, 477);
+		mainpanel.add(denamic);
+		denamic.setLayout(null);
+		
+		tree = new JTree();
+		tree.setBounds(0, 0, 203, 424);
+		denamic.add(tree);
 	}
 }

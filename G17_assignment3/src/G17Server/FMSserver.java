@@ -56,17 +56,26 @@ public class FMSserver extends AbstractServer
   public void handleMessageFromClient
   (Object msg, ConnectionToClient client)
 {
+
 	  Message clientMsg = (Message)msg;
-switch(clientMsg.getMsg()){
+	  	switch(clientMsg.getMsg()){
 						case "UserLogIn":
 							try {
 								userLogIn(clientMsg);
+				
 								break;
 							} catch (SQLException e) {
+							
 								e.printStackTrace();
 				}
 				
 			}
+try {
+	client.sendToClient(clientMsg);
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 }
 
     
@@ -102,14 +111,19 @@ public String serverStoppedPrint() {
 	return  ("Server has stopped listening for connections.");
 }
 
-private void userLogIn(Message msg) throws SQLException {
+public void userLogIn(Message msg) throws SQLException {
 	user user = (user) msg.getObj();
 	user= UserServices.getUser(user.getUsername(), user.getPassword());
 	if(user == null)
+	{
 		msg.setObj(null);
+		
+	}
 	else
+	{
 		msg.setObj(user);
 	msg.setStatus(true);
 	msg.setStatusMsg("done");
-}
+	}
+ }
 }

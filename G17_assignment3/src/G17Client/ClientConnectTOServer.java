@@ -49,7 +49,7 @@ public class ClientConnectTOServer extends JFrame  {
 		ConnectPanel.add(lblServerIP);
 		
 		ServerIP = new JTextField();
-		ServerIP.setText("192.168.56.1");
+		ServerIP.setText("192.168.13.126");
 		ServerIP.setBounds(250, 75, 116, 20);
 		ConnectPanel.add(ServerIP);
 		ServerIP.setColumns(10);

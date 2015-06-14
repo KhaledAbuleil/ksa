@@ -13,12 +13,16 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JFileChooser;
+import java.io.File;
 
 public class NewFile_GUI extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTable table;
+	public JButton btnUploadfile;
+	
 	public NewFile_GUI() {
 		setLayout(null);
 		
@@ -27,7 +31,7 @@ public class NewFile_GUI extends JPanel {
 		add(lblName);
 		
 		textField = new JTextField();
-		textField.setBounds(65, 30, 198, 20);
+		textField.setBounds(65, 30, 107, 20);
 		add(textField);
 		textField.setColumns(10);
 		
@@ -59,7 +63,7 @@ public class NewFile_GUI extends JPanel {
 		textField_2.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Save");
-		btnNewButton.setBounds(316, 259, 89, 23);
+		btnNewButton.setBounds(431, 259, 89, 23);
 		add(btnNewButton);
 		
 		JLabel lblType = new JLabel("Type");
@@ -79,8 +83,12 @@ public class NewFile_GUI extends JPanel {
 		scrollPane.setViewportView(table);
 		
 		JButton btnGroups = new JButton("Groups");
-		btnGroups.setBounds(284, 29, 89, 23);
+		btnGroups.setBounds(296, 29, 89, 23);
 		add(btnGroups);
+		
+		 btnUploadfile = new JButton("UploadFile");
+		btnUploadfile.setBounds(295, 259, 89, 23);
+		add(btnUploadfile);
 		
 	}
 }

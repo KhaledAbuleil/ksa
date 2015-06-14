@@ -16,18 +16,14 @@ import javax.swing.JPanel;
 
 import java.awt.Color;
 
-
-/**
- * class for the login main page frame
- * @author G6
- *
- */
 public class LogInGUI extends JFrame{
 
 	public JButton btnLogin;
 	private JFrame frame;
 	public JPanel panel;
-	
+	public JTextField textUserName;
+	public JTextField passwordField;
+	public JLabel lblFileManagementSystem;
 /**
  * Get wanted panel
  * @return wanted panel
@@ -48,7 +44,7 @@ public class LogInGUI extends JFrame{
 	}
 
 	public JTextField getUserTextField() {
-		return textUserName;
+		return this.textUserName;
 	}
 
 	public void setUserTextField(JTextField userTextField) {
@@ -57,14 +53,10 @@ public class LogInGUI extends JFrame{
 /**
  * field for the name and Id
  */
-	private JTextField textUserName;
-	private JTextField passwordField;
-	private JLabel lblFileManagementSystem;
-	
 	
 	
 	public JTextField getPasswordField() {
-		return passwordField;
+		return this.passwordField;
 	}
 
 	public void setPasswordField(JPasswordField passwordField) {
@@ -118,28 +110,10 @@ public class LogInGUI extends JFrame{
 		lblFileManagementSystem.setBounds(158, 25, 138, 14);
 		panel.add(lblFileManagementSystem);
 		
-		
-		/*btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//User newUser= new User(userTextField.getText(),passwordField.getText());
-				String user;
-				char[] pass;
-				user = userTextField.getText();
-				pass = passwordField.getPassword();
-				if(userTextField.getText().equals("gawad") || passwordField.getPassword().equals('1')){
-					
-					System.out.print("Welcome!");
-				}
-				
-				
-			}
-		});*/
-		
-		
 	}
 	
-	public void addController(ActionListener controller){
-		System.out.print("logIn pnl->Add controller");
-		btnLogin.addActionListener(controller);
+		public void addController(ActionListener controller){
+		//System.out.print("logIn pnl->Add controlleraaa");
+		//btnLogin.addActionListener(controller);
 	}
 }
