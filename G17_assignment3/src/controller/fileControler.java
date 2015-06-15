@@ -3,7 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import user_page_GUI.NewFile_GUI;
+import user_page_GUI.NewFileGUI;
 import user_page_GUI.UploadFile;
 
 //for Create a new file

@@ -123,7 +123,7 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 			   secondFram.getContentPane().setLayout(null);
 			   secondFram.revalidate();
 			   secondFram.repaint();
-				user_page_GUI.NewFile_GUI.addController(MainControler);
+				user_page_GUI.NewFileGUI.addController(MainControler);
 		
 				break;
 	 }

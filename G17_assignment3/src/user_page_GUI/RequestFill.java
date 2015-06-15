@@ -2,10 +2,15 @@ package user_page_GUI;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
@@ -19,7 +24,6 @@ public class RequestFill extends JPanel {
    String[] year={"2015"};
    private JTextField textField;
    private JTextField textField_1;
-   public JTextField textgroup;
    public JComboBox type;
    public  JComboBox days ;
    public  JComboBox months;
@@ -30,7 +34,7 @@ public class RequestFill extends JPanel {
 		
 		JLabel lblRequest = new JLabel("Request");
 		lblRequest.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblRequest.setBounds(283, 26, 110, 42);
+		lblRequest.setBounds(71, 22, 110, 42);
 		add(lblRequest);
 		
 		JLabel lblType = new JLabel("Type");
@@ -43,19 +47,9 @@ public class RequestFill extends JPanel {
 		lblGroup.setBounds(71, 168, 46, 53);
 		add(lblGroup);
 		
-		JLabel lblDate = new JLabel("Date");
-		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDate.setBounds(71, 244, 46, 14);
-		add(lblDate);
-		
 		JButton btnSend = new JButton("Send");
 		btnSend.setBounds(283, 360, 89, 23);
 		add(btnSend);
-		
-		textgroup = new JTextField();
-		textgroup.setBounds(151, 186, 86, 20);
-		add(textgroup);
-		textgroup.setColumns(10);
 		
 		JComboBox type = new JComboBox(A);
 		type.setSelectedIndex(2);
@@ -63,28 +57,12 @@ public class RequestFill extends JPanel {
 		add(type);
         type.addActionListener(type);
         
-        JComboBox days = new JComboBox(day);
-        days.setSelectedIndex(31);
-        days.setBounds(127, 243, 37, 20);
-        add(days);
-        days.addActionListener(days);
-
+        JButton btnSend_1 = new JButton("Send");
+        btnSend_1.setBounds(130, 286, 89, 23);
+        add(btnSend_1);
         
-        JComboBox months = new JComboBox(month);
-        months.setSelectedIndex(12);
-        months.setBounds(168, 243, 37, 20);
-        add(months);
-        months.addActionListener(months);
-
-        
-        JComboBox years = new JComboBox(year);
-        years.setSelectedIndex(1);
-        years.setBounds(208, 244, 56, 19);
-        add(years);
-        years.addActionListener(years);
-
-		
-		
-
+        JComboBox ChooseGroup = new JComboBox();
+        ChooseGroup.setBounds(151, 186, 86, 20);
+        add(ChooseGroup);
 	}
 }

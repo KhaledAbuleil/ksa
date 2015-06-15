@@ -23,14 +23,14 @@ import G17Server.FMSserver;
 
 import java.io.File;
 
-public class NewFile_GUI extends JPanel {
+public class NewFileGUI extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTable table;
 	public static JButton btnUploadfile;
 	public static JButton btnSaveButton;
-	public NewFile_GUI() {
+	public NewFileGUI() {
 		setLayout(null);
 		
 		JLabel lblName = new JLabel("Name");
@@ -74,7 +74,7 @@ public class NewFile_GUI extends JPanel {
 		add(btnSaveButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(285, 62, 155, 188);
+		scrollPane.setBounds(285, 62, 263, 188);
 		add(scrollPane);
 		
 		table = new JTable();
