@@ -12,10 +12,10 @@ import javax.swing.JOptionPane;
 import controller.MainControler;
 import Entity.request;
 import user_page_GUI.RequestFill;
-import user_page_GUI.mainpage;
+import user_page_GUI.UserMainPageGUI;
 public class Useroption implements java.awt.event.ActionListener{
 	private static final ActionListener Useroption = null;
-	private mainpage adminPage;
+	private UserMainPageGUI UserPage;
 	private Object request;
 	private static user_page_GUI.RequestFill RequestFill ;
 	
@@ -30,31 +30,16 @@ public class Useroption implements java.awt.event.ActionListener{
 		 * switch to the relevant case to send to the server.
 		 */
 		
-		switch (e.getActionCommand()) {
+		switch (e.getActionCommand()) 
+		{
+		case ("Create File"):
 
-		
-//===========================Send Request============================
-			case "Send Request":
-				String RqType;
-				String RqGroup;
-				int RqDays;
-				int RqYears;
-				int RqMonths;
-				String Rquname;
-				int intRqGroup;
-			//	intRqGroup=Integer.parseInt(RqGroup);
-				//RqGroup = mpgui.RequestFill.textgroup.getText();
-				//RqType=(String) mpgui.RequestFill.type.getSelectedItem();
-				//RqDays=Integer.parseInt((String) mpgui.RequestFill.days.getSelectedItem());
-			//	RqMonths=Integer.parseInt((String) mpgui.RequestFill.months.getSelectedItem());
-				//RqYears=Integer.parseInt((String) mpgui.RequestFill.years.getSelectedItem());
-				//Date Rqdate = new Date(RqYears,RqMonths,RqDays);				
-				//if(RqType.equals("Join"));
-
+			break;
 		}
+		
 	}
-	public void addGuiPage( mainpage adminPage)
+	public void addGuiPage( UserMainPageGUI adminPage)
 	{
-		this.adminPage=adminPage;
+		this.UserPage=adminPage;
 	}
 }

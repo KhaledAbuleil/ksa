@@ -12,43 +12,44 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
+import javax.swing.JPanel;
 
-import Entity.request;
 import Entity.user;
 import G17Client.ClientConnectTOServer;
 import G17Client.FMSClient;
-import user_page_GUI.RequestFill;
-import user_page_GUI.mainpage;
 import G17Client.LogInGUI;
 import Message.Message;
-
-import javax.swing.JPanel;
-
-import com.jgoodies.forms.layout.Size;
-
 import common.ChatIF;
 
 import javax.swing.JButton;
+
+import user_page_GUI.UserMainPageGUI;
 
 public abstract class MainControler implements java.awt.event.ActionListener{
 	private static final ActionListener MainControler = null;
 	private static FMSClient clientConection;
 	static JFrame mainFram;
+	static JFrame  secondFram;
 	static JPanel mainPanel ;
 	static ClientConnectTOServer cctsg;
+	 static ClientConnectTOServer cctsg2;
 	static   ChatIF clientUI; 
 	static int portInt;
 	static String serverAdd = null;
 	static String port="0000" ;
-	private static LogInGUI LogInPage; 
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		mainFram = new JFrame("Main Frame");
 		mainFram.setSize(800, 700);
+		mainFram.getContentPane().setLayout(null);
 		mainFram.setVisible(true);
-		cctsg = new ClientConnectTOServer();
-		mainPanel = cctsg.ConnectPanel;
+	cctsg = new ClientConnectTOServer();
+	  LogInGUI LogInPage=new LogInGUI(); 
+
+		cctsg.ServerIP.setText("192.168.56.1");
+		mainPanel=cctsg.ConnectPanel;
 		mainFram.setContentPane(mainPanel);
+		
 		mainFram.getContentPane().setLayout(null);
 		cctsg.btnConnect.addActionListener(new ActionListener() {
 			 	public void actionPerformed(ActionEvent e) {
@@ -59,6 +60,8 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 					cctsg.textPane.append(serverAdd+"\n");
 			 	}
 			 });
+		mainFram.revalidate();
+		mainFram.repaint();
 
 		/**+
 		 * connect to Server.
@@ -79,12 +82,14 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 		
 
 		if(clientConection != null){
-			LogInPage = new LogInGUI();
+			
 			TimeUnit.SECONDS.sleep(2);
-			cctsg.ConnectPanel.setVisible(false);
+			mainPanel.setVisible(false);
 			mainPanel=LogInPage.panel;
 			mainFram.setContentPane(mainPanel);
 			mainFram.getContentPane().setLayout(null);
+			mainFram.revalidate();
+			mainFram.repaint();
 		}		
 	
 	   LogInPage.addController(MainControler);
@@ -94,6 +99,7 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 				user Client = new user(LogInPage.getUserTextField().getText(),LogInPage.getPasswordField().getText());
 				Message msg = new Message(Client,"UserLogIn");
 				try {
+					System.out.println("1"+LogInPage.getUserTextField().getText()+LogInPage.getPasswordField().getText());
 						clientConection.sendToServer(msg);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
@@ -105,16 +111,21 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 	public static void userRole(Message msg)
 	{
 	 user user = (user) msg.getObj();
-	 JPanel adminmainPanel;
+	 System.out.println(user.getRole());
 	switch(user.getRole()){
-		 case "admin":
-			 mainpage adminPage=new mainpage();
-			 Useroption Myoption=new Useroption();
-			 Myoption.addGuiPage(adminPage);
-					 LogInPage.panel.setVisible(false);;
-					 mainPanel=adminPage.adminpanel;
-				mainFram.setContentPane(mainPanel);
-				mainFram.getContentPane().setLayout(null);
+		 case "user":
+				Useroption userOp=new Useroption();//Control For UserPage
+				UserMainPageGUI userPage = new UserMainPageGUI();;//The User page
+				userOp.addGuiPage(userPage);
+				mainFram.setVisible(false);
+				   secondFram=userPage;
+				   secondFram.setVisible(true);
+			   secondFram.getContentPane().setLayout(null);
+			   secondFram.revalidate();
+			   secondFram.repaint();
+				user_page_GUI.NewFile_GUI.addController(MainControler);
+		
+				break;
 	 }
 	}
 	

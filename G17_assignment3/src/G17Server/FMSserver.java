@@ -56,13 +56,11 @@ public class FMSserver extends AbstractServer
   public void handleMessageFromClient
   (Object msg, ConnectionToClient client)
 {
-
 	  Message clientMsg = (Message)msg;
 	  	switch(clientMsg.getMsg()){
 						case "UserLogIn":
 							try {
-								userLogIn(clientMsg);
-				
+								userLogIn(clientMsg);				
 								break;
 							} catch (SQLException e) {
 							
@@ -117,7 +115,6 @@ public void userLogIn(Message msg) throws SQLException {
 	if(user == null)
 	{
 		msg.setObj(null);
-		
 	}
 	else
 	{

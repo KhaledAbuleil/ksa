@@ -113,7 +113,7 @@ public class LogInGUI extends JFrame{
 	}
 	
 		public void addController(ActionListener controller){
-		//System.out.print("logIn pnl->Add controlleraaa");
-		//btnLogin.addActionListener(controller);
+		System.out.print("logIn pnl->Add controlleraaa");
+		btnLogin.addActionListener(controller);
 	}
 }

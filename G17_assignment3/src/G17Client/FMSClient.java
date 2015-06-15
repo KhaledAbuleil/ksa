@@ -70,9 +70,11 @@ public class FMSClient extends AbstractClient
 	 switch( ServerMsg.getMsg())
 	 {
 	 case "UserLogIn":
+	 {
 		 MainControler.userRole(ServerMsg);
+		 break;
 	 }
-	 
+	 }
 	  
   }
 

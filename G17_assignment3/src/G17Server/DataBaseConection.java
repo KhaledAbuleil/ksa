@@ -7,48 +7,92 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-	public class DataBaseConection {
-		private static DataBaseConection instance ;
-		private Connection conn = null;
-		private static String DataBaseName;
-		private String Username ;
-		private String Password ;
-		private static String Host;
-		private static String Port ;
-		private static String Driver;
-		private static Connection Conn;
-		private static String Str;
 
+	public class DataBaseConection {
+		private static DataBaseConection instance = null;
+		private String DataBaseName = "fmsdb";		//ccrm_db
+		private String Username = "root"; //default     braude
+		private String Password = "Braude";     // default	Braude
+		private String Host = "localhost"; // default   
+		private String Port = "4444";      // default
+		private String port = "3306";      // default
+		private static String Driver = "com.mysql.jdbc.Driver"; // default
+		private String Str;
+		private Connection conn = null;
 		public  DataBaseConection()
 		{
-			DataBaseName = "fmsdb";//DataBase name from mySql
-			Username = "root";//default  username =root
-			Password = "Braude"; // default password=Braude
-			Host = "localhost";// default  host localhost
-			Port = "4444";// default port 5555
-			Conn=null;
-			Str=null;
-			instance=null;
+
 		}
-		public static Connection GetConnection()
-		{
-		if (instance == null) {
+		private String connStr;
+		public static DataBaseConection getInstance() {
+			if (instance == null) {
+				System.out.println("null");
 				 try {		           
-			            Class.forName("com.mysql.jdbc.Driver").newInstance();
-			        } catch (Exception ex) {/* handle the error*/
+			            Class.forName(Driver).newInstance();
+			        } catch (Exception ex) {
+			        	System.out.println("exceptipon");
 			            ex.printStackTrace();
 			        }
 				instance = new DataBaseConection();
 			}
-		Str = "jdbc:mysql://"+GetHost()+":"+GetPort()+"/"+GetDataBaseName()+"?zeroDateTimeBehavior=convertToNull";
-				try {
-					Conn=DriverManager.getConnection(Str);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return Conn;
+			return instance;
 		}
+
+		
+
+		private boolean openConnection()
+		{
+			try {
+				System.out.println("try");
+				conn = DriverManager.getConnection("jdbc:mysql://localhost/fmsdb","root","Braude");
+				return true;
+			} catch (SQLException e) {
+				System.out.println("try2");
+				e.printStackTrace();
+			}
+			return false;
+		}
+
+		public Connection getConnection1()
+		{
+			if (conn == null) {
+				System.out.println("conn=null");
+				if (openConnection()) {
+					System.out.println("6");
+					System.out.println("Connection opened");
+					return conn;
+				} else {
+					return null;
+				}
+			}
+			return conn;
+		}
+
+		public void close() {
+			System.out.println("Closing connection");
+			try {
+				conn.close();
+				conn = null;
+			} catch (Exception e) {
+			}
+		}
+		
+		
+		
+		
+		public String getMysqlConnStr() {
+			String host = GetHost();
+			String port = GetPort();
+			String dbname = GetDataBaseName();
+			String connStr = null;
+			if(!GetHost().isEmpty() && !GetPort().isEmpty() && !GetDataBaseName().isEmpty()){
+				connStr = "jdbc:mysql://"+GetHost()+":"+
+			                                     "/"+GetDataBaseName()+"?zeroDateTimeBehavior=convertToNull";
+			}
+			return connStr;
+		}
+		
+
 		
 		public void SetDataBaseName(String DataBaseName)
 		{
@@ -75,39 +119,31 @@ import java.sql.Statement;
 			this.Port=Port;
 		}
 		
-		public static String GetDataBaseName()
+		public  String GetDataBaseName()
 		{
 			return DataBaseName;
 		}
 		
-		public String GetUsername()
+		public  String GetUsername()
 		{
 			return Username;
 		}
 		
-		public String GetPassword()
+		public  String GetPassword()
 		{
 			return Password;
 		}
 		
-		public static String GetHost()
+		public  String GetHost()
 		{
 			return Host;
 		}
 		
-		public static String GetPort()
+		public  String GetPort()
 		{
 			return Port;
 		}
 		
-		public void close() {
-			System.out.println("Closing connection");
-			try {
-				conn.close();
-				conn = null;
-			} catch (Exception e) {
-			}
-		}
 
 	}
 		

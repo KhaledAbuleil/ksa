@@ -10,10 +10,17 @@ import javax.swing.JEditorPane;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.DefaultComboBoxModel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JScrollPane;
 import javax.swing.JFileChooser;
+
+import G17Server.DataBaseConection;
+import G17Server.FMSSErverGUI;
+import G17Server.FMSserver;
+
 import java.io.File;
 
 public class NewFile_GUI extends JPanel {
@@ -21,8 +28,8 @@ public class NewFile_GUI extends JPanel {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTable table;
-	public JButton btnUploadfile;
-	
+	public static JButton btnUploadfile;
+	public static JButton btnSaveButton;
 	public NewFile_GUI() {
 		setLayout(null);
 		
@@ -62,18 +69,9 @@ public class NewFile_GUI extends JPanel {
 		add(textField_2);
 		textField_2.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Save");
-		btnNewButton.setBounds(431, 259, 89, 23);
-		add(btnNewButton);
-		
-		JLabel lblType = new JLabel("Type");
-		lblType.setBounds(129, 263, 46, 14);
-		add(lblType);
-		
-		JComboBox comboBox_type = new JComboBox();
-		comboBox_type.setModel(new DefaultComboBoxModel(new String[] {"doc", "img"}));
-		comboBox_type.setBounds(160, 260, 51, 20);
-		add(comboBox_type);
+		 btnSaveButton = new JButton("Save");
+		btnSaveButton.setBounds(324, 270, 89, 23);
+		add(btnSaveButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(285, 62, 155, 188);
@@ -87,8 +85,13 @@ public class NewFile_GUI extends JPanel {
 		add(btnGroups);
 		
 		 btnUploadfile = new JButton("UploadFile");
-		btnUploadfile.setBounds(295, 259, 89, 23);
+		btnUploadfile.setBounds(182, 29, 89, 23);
 		add(btnUploadfile);
-		
 	}
-}
+
+	public static void addController(ActionListener controller) {
+		System.out.print("mainpage pnl->newfiler");
+		btnSaveButton.addActionListener(controller);
+		btnUploadfile.addActionListener(controller);
+	}
+	}

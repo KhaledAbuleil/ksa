@@ -83,5 +83,4 @@ public class ClientConnectTOServer extends JFrame  {
 	{
 		this.client=client;
 	}
-	
 }
