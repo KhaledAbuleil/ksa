@@ -37,6 +37,15 @@ INSERT INTO `file` (`f_name`,`f_type`,`f_size`,`f_describe`,`f_privilege`,`f_add
   ('\"hedva\"','\"doc\"',4000,'\"hedva 1 limit \"',3,'\"D:\\G17\\hedva\\\"'),
     ('\"algebra\"','\"doc\"',4000,'\"algbra  1 matrix \"',2,'\"D:\\G17\\algebra\\\"')
 /*====================================*/
-
+INSERT INTO `fmsdb`.`users` 
+(`u_username`,`u_password`,`u_firstname`, `u_lastname`, `u_Role`, `u_Status`) VALUES 
+('saeednamih',123,'\"saeed\"','\"namih\"','\"admin\"','\"ofline\"'),
+('\"Khaled1\"',321,'\"Khaled\"','\"dmam\"','\"user\"','\"ofline\"'),
+('\"anita1\"',444,'\"anita\"','\"foad\"','\"admin\"','\"ofline\"'),
+('\"wsam1\"',555,'\"wsam\"','\"amr\"','\"user\"','\"ofline\"'),
+('\"wsam\"',111,'\"wsam\"','\"assadi\"','\"user\"','\"ofline\"'),
+('\"jojo\"',123,'\"jmal\"','\"dabbah\"','\"user\"','\"ofline\"'),
+('\"nader\"',321,'\"nader\"','\"kmal\"','\"user\"','\"ofline\"'),
+('\"client\"',123,'\"client\"','\"client\"','\"user\"','\"ofline\"');
 
 

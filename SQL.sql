@@ -30,12 +30,13 @@ CREATE TABLE `UpdateFile` (
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `u_password` INT(20)  NOT NULL,
+ 
   `u_username` varchar(45) NOT NULL,
+   `u_password` INT(20)  NOT NULL,
   `u_firstname` varchar(45) NOT NULL,
   `u_lastname` varchar(45) NOT NULL,
-	`u_Role` int(1) NOT NULL,
-	`u_Status` int(1) NOT NULL DEFAULT '0',
+	`u_Role` varchar(45) NOT NULL,
+	`u_Status` varchar(45) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`u_username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*==========================================*/
