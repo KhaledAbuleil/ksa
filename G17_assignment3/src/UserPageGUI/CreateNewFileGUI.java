@@ -1,4 +1,4 @@
-package user_page_GUI;
+package UserPageGUI;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,14 +23,14 @@ import G17Server.FMSserver;
 
 import java.io.File;
 
-public class NewFileGUI extends JPanel {
+public class CreateNewFileGUI extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTable table;
 	public static JButton btnUploadfile;
 	public static JButton btnSaveButton;
-	public NewFileGUI() {
+	public CreateNewFileGUI() {
 		setLayout(null);
 		
 		JLabel lblName = new JLabel("Name");

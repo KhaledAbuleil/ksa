@@ -1,4 +1,4 @@
-package user_page_GUI;
+package UserPageGUI;
 
 import java.io.File;
 

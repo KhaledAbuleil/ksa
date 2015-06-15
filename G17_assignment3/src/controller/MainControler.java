@@ -19,11 +19,10 @@ import G17Client.ClientConnectTOServer;
 import G17Client.FMSClient;
 import G17Client.LogInGUI;
 import Message.Message;
+import UserPageGUI.UserMainPageGUI;
 import common.ChatIF;
 
 import javax.swing.JButton;
-
-import user_page_GUI.UserMainPageGUI;
 
 public abstract class MainControler implements java.awt.event.ActionListener{
 	private static final ActionListener MainControler = null;
@@ -123,7 +122,7 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 			   secondFram.getContentPane().setLayout(null);
 			   secondFram.revalidate();
 			   secondFram.repaint();
-				user_page_GUI.NewFileGUI.addController(MainControler);
+				UserPageGUI.CreateNewFileGUI.addController(MainControler);
 		
 				break;
 	 }

@@ -1,4 +1,4 @@
-package user_page_GUI;
+package UserPageGUI;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
