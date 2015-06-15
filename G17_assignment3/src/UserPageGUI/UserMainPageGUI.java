@@ -16,21 +16,22 @@ import javax.swing.border.EmptyBorder;
 public class UserMainPageGUI extends JFrame {
 
 	private JPanel contentPane;
-	
+	private 	CreateNewFileGUI newFile ;
+	private RequestFill Request;
 		public UserMainPageGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setBounds(100, 100, 776, 394);
+		setBounds(100, 100, 776, 500);
 		JButton btnCreateFile = new JButton("Create File");
 		btnCreateFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CreateNewFileGUI newFile = new CreateNewFileGUI();
-				
+				 newFile = new CreateNewFileGUI();
 				newFile.setBounds(100, 100, 776, 394);
 				contentPane.add(newFile);
+				 repaint();
 				
 			}
 		});
@@ -41,10 +42,10 @@ public class UserMainPageGUI extends JFrame {
 		btnSendRequest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				RequestFill ReqRequestFilluest = new RequestFill();
-				//newFile.setVisible(false);
-				ReqRequestFilluest.setBounds(100, 100, 776, 394);
-				contentPane.add(ReqRequestFilluest);
+				 Request = new RequestFill();
+				newFile.setVisible(false);
+				Request.setBounds(100, 100, 776, 394);
+				contentPane.add(Request);
 				
 			}
 		});
