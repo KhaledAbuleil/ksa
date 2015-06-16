@@ -10,6 +10,7 @@ import java.sql.Date;
 import javax.swing.JOptionPane;
 
 import UserPageGUI.RequestFill;
+import UserPageGUI.UploadFile;
 import UserPageGUI.UserMainPageGUI;
 import controller.MainControler;
 import Entity.request;
@@ -25,21 +26,23 @@ public class Useroption implements java.awt.event.ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		
 		/**
 		 * switch to the relevant case to send to the server.
 		 */
-		
+		System.out.println("Aaaa");
 		switch (e.getActionCommand()) 
 		{
-		case ("Create File"):
-
+		case ("Upload File"):
+	 		UploadFile up=new UploadFile();
+ 			up.setVisible(true);
+ 			up.SelectedPath();
+ 			
 			break;
 		}
 		
 	}
-	public void addGuiPage( UserMainPageGUI adminPage)
+	public void addGuiPage( UserMainPageGUI userPage)
 	{
-		this.UserPage=adminPage;
+		this.UserPage=userPage;
 	}
 }

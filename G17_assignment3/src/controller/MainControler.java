@@ -113,17 +113,14 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 	 System.out.println(user.getRole());
 	switch(user.getRole()){
 		 case "user":
+			 	mainFram.setVisible(false);
 				Useroption userOp=new Useroption();//Control For UserPage
 				UserMainPageGUI userPage = new UserMainPageGUI();;//The User page
+				userPage.setVisible(true);
 				userOp.addGuiPage(userPage);
-				mainFram.setVisible(false);
-				   secondFram=userPage;
-				   secondFram.setVisible(true);
-			   secondFram.getContentPane().setLayout(null);
-			   secondFram.revalidate();
-			   secondFram.repaint();
-				UserPageGUI.CreateNewFileGUI.addController(MainControler);
-		
+				userPage.newFile.addController(userOp);
+				//userPage.up.addController(userOp);
+				//userPage.Request.addController(userOp);
 				break;
 	 }
 	}

@@ -10,6 +10,7 @@ import UserPageGUI.UploadFile;
 public  class fileControler implements java.awt.event.ActionListener {
 private fileControler CreateFtile;
 private UploadFile upfile;
+
 public fileControler()
 {
 	CreateFtile=new fileControler();
@@ -22,6 +23,7 @@ public void actionPerformed(ActionEvent e) {
 	case  "UploadFile":
 	{
 		upfile=new UploadFile();
+		System.out.println("aaaa");
 		break;
 	}
 		
@@ -29,9 +31,7 @@ public void actionPerformed(ActionEvent e) {
 	
 	}
 }
-public void setView(UploadFile upfile) {
-	this.upfile = upfile;
-}
+
 
 
 //.addActionListener(new ActionListener() {

@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JFileChooser;
 
+import controller.Useroption;
 import G17Server.DataBaseConection;
 import G17Server.FMSSErverGUI;
 import G17Server.FMSserver;
@@ -28,11 +29,10 @@ public class CreateNewFileGUI extends JPanel {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTable table;
-	public static JButton btnUploadfile;
-	public static JButton btnSaveButton;
+	public  JButton btnUploadfile;
+	public  JButton btnSaveButton;
 	public CreateNewFileGUI() {
 		setLayout(null);
-		
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(10, 33, 46, 14);
 		add(lblName);
@@ -84,14 +84,14 @@ public class CreateNewFileGUI extends JPanel {
 		btnGroups.setBounds(296, 29, 89, 23);
 		add(btnGroups);
 		
-		 btnUploadfile = new JButton("UploadFile");
+		 btnUploadfile = new JButton("Upload File");
 		btnUploadfile.setBounds(182, 29, 89, 23);
 		add(btnUploadfile);
 	}
 
-	public static void addController(ActionListener controller) {
+	public  void addController(ActionListener controller) {
 		System.out.print("mainpage pnl->newfiler");
-		btnSaveButton.addActionListener(controller);
 		btnUploadfile.addActionListener(controller);
+	
 	}
 	}

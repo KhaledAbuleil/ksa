@@ -13,13 +13,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controller.Useroption;
+
 public class UserMainPageGUI extends JFrame {
 
 	private JPanel contentPane;
-	private 	CreateNewFileGUI newFile ;
-	private RequestFill Request;
-		public UserMainPageGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public 	CreateNewFileGUI newFile ;
+	public RequestFill Request;
+	public  UploadFile up;
+	public UserMainPageGUI() {
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setBounds(100, 100, 840, 544);
+			//Request= new RequestFill();
+			 newFile=new CreateNewFileGUI();
+			//up= new  UploadFile ();
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -28,10 +35,10 @@ public class UserMainPageGUI extends JFrame {
 		JButton btnCreateFile = new JButton("Create File");
 		btnCreateFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 newFile = new CreateNewFileGUI();
 				newFile.setBounds(100, 100, 776, 394);
 				contentPane.add(newFile);
 				 repaint();
+
 				
 			}
 		});
@@ -43,7 +50,6 @@ public class UserMainPageGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				 Request = new RequestFill();
-				newFile.setVisible(false);
 				Request.setBounds(100, 100, 776, 394);
 				contentPane.add(Request);
 				
@@ -72,14 +78,17 @@ public class UserMainPageGUI extends JFrame {
 	}
 	
 	public static void main(String[] args) {
+
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				
 				try {
-					UserMainPageGUI frame = new UserMainPageGUI();
-					frame.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
 			}
 		});
 	}
