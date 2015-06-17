@@ -5,10 +5,12 @@ package G17Server;
 
 import java.io.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import Entity.MyFile;
 import Entity.user;
 import Message.Message;
-import SQLServices.UserServices;
+import SQLServices.*;
 import ocsf.server.*;
 
 /**
@@ -62,10 +64,22 @@ public class FMSserver extends AbstractServer
 							try {
 								userLogIn(clientMsg);				
 								break;
-							} catch (SQLException e) {
-							
+								} catch (SQLException e) {
 								e.printStackTrace();
-				}
+								}
+							
+						case "Create File":
+							try {
+								CreateFile(clientMsg);				
+								break;
+								} catch (SQLException e) {
+								e.printStackTrace();
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							
+							
 				
 			}
 try {
@@ -77,7 +91,9 @@ try {
 }
 
     
-  /**
+
+
+/**
    * This method overrides the one in the superclass.  Called
    * when the server starts listening for connections.
    */
@@ -123,4 +139,19 @@ public void userLogIn(Message msg) throws SQLException {
 	msg.setStatusMsg("done");
 	}
  }
+private void CreateFile(Message msg)throws SQLException, IOException {
+	// TODO Auto-generated method stub
+	MyFile file = (MyFile) msg.getObj();
+
+	ArrayList<String>list=fileSQLServices.GetFileName();
+	for(int i=0;i<list.size();i++)
+	{
+		if(list.get(i)==file.getFname())
+			return;
+	}
+    byte [] mybytearray  = new byte [file.getSize()];
+    FileOutputStream fos = new FileOutputStream("D:\\FMS\\"+file.getFname()+"."+file.getType());
+    fos.write(file.getMybytearray());	 
+	
+	}	
 }

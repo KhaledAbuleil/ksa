@@ -23,75 +23,93 @@ import G17Server.FMSSErverGUI;
 import G17Server.FMSserver;
 
 import java.io.File;
+import java.awt.Label;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import java.awt.TextArea;
 
 public class CreateNewFileGUI extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	public JTextField TheFileName;
+	public JTextField textField_1;
 	private JTable table;
 	public  JButton btnUploadfile;
 	public  JButton btnSaveButton;
+	public JComboBox comboBox_privellege;
+	public TextArea DescribeField;
 	public CreateNewFileGUI() {
 		setLayout(null);
+		setSize(646,332);
 		JLabel lblName = new JLabel("Name");
-		lblName.setBounds(10, 33, 46, 14);
 		add(lblName);
 		
-		textField = new JTextField();
-		textField.setBounds(65, 30, 107, 20);
-		add(textField);
-		textField.setColumns(10);
+		TheFileName = new JTextField();
+		TheFileName.setBounds(161, 30, 196, 20);
+		add(TheFileName);
+		TheFileName.setColumns(10);
 		
 		JLabel lblLocation = new JLabel("Location");
-		lblLocation.setBounds(10, 238, 46, 14);
+		lblLocation.setBounds(105, 238, 46, 14);
 		add(lblLocation);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(65, 235, 198, 20);
+		textField_1.setBounds(161, 235, 206, 20);
 		add(textField_1);
 		textField_1.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Privellege");
-		lblNewLabel.setBounds(10, 263, 46, 14);
+		lblNewLabel.setBounds(271, 266, 46, 14);
 		add(lblNewLabel);
 		
-		JComboBox comboBox_privellege = new JComboBox();
+		 comboBox_privellege = new JComboBox();
 		comboBox_privellege.setModel(new DefaultComboBoxModel(new String[] {"3", "1", "2"}));
-		comboBox_privellege.setBounds(65, 260, 46, 20);
+		comboBox_privellege.setBounds(342, 260, 46, 20);
 		add(comboBox_privellege);
 		
 		JLabel lblNewLabel_1 = new JLabel("Describe");
-		lblNewLabel_1.setBounds(10, 58, 46, 14);
+		lblNewLabel_1.setBounds(105, 61, 46, 14);
 		add(lblNewLabel_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(65, 61, 198, 170);
-		add(textField_2);
-		textField_2.setColumns(10);
-		
 		 btnSaveButton = new JButton("Save");
-		btnSaveButton.setBounds(324, 270, 89, 23);
+
+		btnSaveButton.setBounds(462, 262, 89, 23);
 		add(btnSaveButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(285, 62, 263, 188);
+		scrollPane.setBounds(370, 60, 179, 188);
 		add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
 		JButton btnGroups = new JButton("Groups");
-		btnGroups.setBounds(296, 29, 89, 23);
+		btnGroups.setBounds(489, 29, 89, 23);
 		add(btnGroups);
 		
 		 btnUploadfile = new JButton("Upload File");
-		btnUploadfile.setBounds(182, 29, 89, 23);
+		btnUploadfile.setBounds(370, 29, 89, 23);
 		add(btnUploadfile);
+		
+		Label label = new Label("File Name");
+		label.setBounds(105, 28, 51, 22);
+		add(label);
+		
+		 DescribeField = new TextArea();
+		DescribeField.setBounds(161, 56, 196, 160);
+		add(DescribeField);
+		
+
+		
+		
+
 	}
 
 	public  void addController(ActionListener controller) {
 		System.out.print("mainpage pnl->newfiler");
+		btnSaveButton.addActionListener(controller);
 		btnUploadfile.addActionListener(controller);
+	
 	
 	}
 	}

@@ -18,7 +18,6 @@ public class UserServices {
 		 PreparedStatement stmt=null;
 		 PreparedStatement updateSales;
 		user loginUser=new user();
-		System.out.println("6");
 		try{	
 			stmt=conn.prepareStatement("SELECT * FROM  users where u_username=? and u_password=?");
 			stmt.setString(1,name);

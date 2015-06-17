@@ -14,28 +14,29 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.Useroption;
+import javax.swing.JTree;
 
 public class UserMainPageGUI extends JFrame {
 
 	private JPanel contentPane;
 	public 	CreateNewFileGUI newFile ;
 	public RequestFill Request;
-	public  UploadFile up;
+	public  UploadFile upload;
+	
 	public UserMainPageGUI() {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setBounds(100, 100, 840, 544);
+			setBounds(0, 0, 900, 700);
 			//Request= new RequestFill();
 			 newFile=new CreateNewFileGUI();
-			//up= new  UploadFile ();
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setBounds(100, 100, 776, 500);
+		contentPane.setBounds(0,0,800,600);
 		JButton btnCreateFile = new JButton("Create File");
 		btnCreateFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				newFile.setBounds(100, 100, 776, 394);
+				newFile.setBounds(0,100,646,332);
 				contentPane.add(newFile);
 				 repaint();
 
@@ -48,7 +49,7 @@ public class UserMainPageGUI extends JFrame {
 		JButton btnSendRequest = new JButton("Send Request");
 		btnSendRequest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				newFile.setVisible(false);
 				 Request = new RequestFill();
 				Request.setBounds(100, 100, 776, 394);
 				contentPane.add(Request);
@@ -92,5 +93,4 @@ public class UserMainPageGUI extends JFrame {
 			}
 		});
 	}
-
 }
