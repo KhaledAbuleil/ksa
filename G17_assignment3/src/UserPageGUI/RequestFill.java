@@ -15,6 +15,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -30,6 +31,7 @@ public class RequestFill extends JPanel {
    public  JComboBox days ;
    public  JComboBox months;
    public  JComboBox years;
+  public JButton btnSendR;
    
 	public RequestFill() {
 		setLayout(null);
@@ -58,16 +60,22 @@ public class RequestFill extends JPanel {
 		add(type);
         type.addActionListener(type);
         
-        JButton btnSend_1 = new JButton("Send");
-        btnSend_1.addActionListener(new ActionListener() {
+         btnSendR = new JButton("Send");
+        btnSendR.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         	}
         });
-        btnSend_1.setBounds(130, 286, 89, 23);
-        add(btnSend_1);
+        btnSendR.setBounds(130, 286, 89, 23);
+        add(btnSendR);
         
         JComboBox ChooseGroup = new JComboBox();
         ChooseGroup.setBounds(151, 186, 86, 20);
         add(ChooseGroup);
 	}
-}
+	public  void addController(ActionListener controller) {
+		System.out.print("request fill");
+		btnSendR.addActionListener(controller);
+	}
+	
+	
+	}
