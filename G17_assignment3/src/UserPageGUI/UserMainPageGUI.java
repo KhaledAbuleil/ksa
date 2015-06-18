@@ -22,22 +22,26 @@ public class UserMainPageGUI extends JFrame {
 	public 	CreateNewFileGUI newFile ;
 	public RequestFill Request;
 	public  UploadFile upload;
-	
+	public JPanel panel ;
 	public UserMainPageGUI() {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(0, 0, 900, 700);
-			//Request= new RequestFill();
+			Request= new RequestFill();
 			 newFile=new CreateNewFileGUI();
 		contentPane = new JPanel();
+		panel= new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.setBounds(0,0,800,600);
+		contentPane.add(panel);
 		JButton btnCreateFile = new JButton("Create File");
 		btnCreateFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				contentPane.remove(panel);
+				panel=newFile;
 				newFile.setBounds(0,100,646,332);
-				contentPane.add(newFile);
+				contentPane.add(panel);
 				 repaint();
 
 				
@@ -49,10 +53,12 @@ public class UserMainPageGUI extends JFrame {
 		JButton btnSendRequest = new JButton("Send Request");
 		btnSendRequest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				newFile.setVisible(false);
-				 Request = new RequestFill();
-				Request.setBounds(100, 100, 776, 394);
-				contentPane.add(Request);
+				contentPane.remove(panel);
+				panel=Request;
+				Request.setBounds(0,100,646,332);
+				contentPane.add(panel);
+				 repaint();
+
 				
 			}
 		});
@@ -80,9 +86,15 @@ public class UserMainPageGUI extends JFrame {
 		JLabel lblSearch = new JLabel("Search");
 		lblSearch.setBounds(494, 10, 200, 50);
 		contentPane.add(lblSearch);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(116, 76, 321, 198);
+		contentPane.add(panel);
 	}
 	
 	public static void main(String[] args) {
+		UserMainPageGUI g=new UserMainPageGUI();
+		g.setVisible(true);
 
 
 		EventQueue.invokeLater(new Runnable() {

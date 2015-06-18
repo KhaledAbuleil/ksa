@@ -120,7 +120,7 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 				userOp.addGuiPage(userPage);
 				userPage.newFile.addController(userOp);
 				//userPage.up.addController(userOp);
-				//userPage.Request.addController(userOp);
+				userPage.Request.addController(userOp);
 				break;
 	 }
 	}
