@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Entity.MyFile;
+import Entity.request;
 import Entity.user;
 import Message.Message;
 import SQLServices.*;
@@ -67,7 +68,7 @@ public class FMSserver extends AbstractServer
 								} catch (SQLException e) {
 								e.printStackTrace();
 								}
-							
+							break;
 						case "Create File":
 							try {
 								CreateFile(clientMsg);				
@@ -78,7 +79,11 @@ public class FMSserver extends AbstractServer
 									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}
-							
+						case "send request":
+						{
+							SendRequest (clientMsg);
+							break;
+						}
 							
 				
 			}
@@ -154,4 +159,9 @@ private void CreateFile(Message msg)throws SQLException, IOException {
     fos.write(file.getMybytearray());	 
 	
 	}	
+private void SendRequest (Message msg) 
+{
+	request myrequest=(request) msg.getObj();
+	
+}
 }

@@ -67,7 +67,7 @@ CREATE TABLE `userInGroup` (
 DROP TABLE IF EXISTS `request`;
 CREATE TABLE `request` (
   `r_id`  INT NOT NULL AUTO_INCREMENT,
-  `r_Date` DATETIME  NOT NULL,
+  `r_group` DATETIME  NOT NULL,
   `r_username` varchar(45) NOT NULL,
   `r_join_retire` varchar(45) NOT NULL,
 	PRIMARY KEY ( `r_id`)
