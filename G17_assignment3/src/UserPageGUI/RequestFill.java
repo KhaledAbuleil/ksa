@@ -32,6 +32,7 @@ public class RequestFill extends JPanel {
    public  JComboBox months;
    public  JComboBox years;
   public JButton btnSendR;
+  public JTextField GroupTxt;
    
 	public RequestFill() {
 		setLayout(null);
@@ -68,14 +69,13 @@ public class RequestFill extends JPanel {
         btnSendR.setBounds(130, 286, 89, 23);
         add(btnSendR);
         
-        JComboBox ChooseGroup = new JComboBox();
-        ChooseGroup.setBounds(151, 186, 86, 20);
-        add(ChooseGroup);
+        GroupTxt = new JTextField();
+        GroupTxt.setBounds(151, 186, 86, 20);
+        add(GroupTxt);
+        GroupTxt.setColumns(10);
 	}
 	public  void addController(ActionListener controller) {
 		System.out.print("request fill");
 		btnSendR.addActionListener(controller);
 	}
-	
-	
 	}

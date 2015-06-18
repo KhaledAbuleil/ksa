@@ -125,7 +125,6 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 	 }
 	}
 	
-
 	public static FMSClient getInstance() {
 		if (clientConection == null)
 			try {
@@ -136,6 +135,5 @@ public abstract class MainControler implements java.awt.event.ActionListener{
 			}
 		return clientConection;
 	}
-
 
 }

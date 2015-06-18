@@ -90,6 +90,22 @@ public class Useroption implements java.awt.event.ActionListener{
 	 				}
 				}
 				 break;
+		case ("Send"):
+		{
+			if((UserPage.Request.GroupTxt.getText()).equals(""))
+				JOptionPane.showMessageDialog(UserPage, "insert a Group Name");
+			request user_request=new request();
+			user_request.setRname(UserPage.Request.GroupTxt.getText());
+			user_request.setRtype(UserPage.Request.type.getSelectedItem().toString());
+		     Message msg = new Message(user_request,"send request");
+		    try {
+				clientConection.sendToServer(msg);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				System.out.println("useroption->send request error");
+			}		      
+		    }
  			}
  		
 		}
